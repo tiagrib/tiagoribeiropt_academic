@@ -1,0 +1,24 @@
+# Theme metadata
+name = "Tiagal"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#8C342A"
+#primary = "#F2DE44"
+
+
+# Menu
+# background
+menu_primary = "#A8B38F"
+
+menu_text = "#384023"
+menu_text_active = "#FFFFFF"
+
+# title text color
+menu_title = "#384023"
+
+# Home sections
+home_section_odd = "#E6EBF2"
+home_section_even = "#E2E4F3"

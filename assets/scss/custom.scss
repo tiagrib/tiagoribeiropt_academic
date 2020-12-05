@@ -1,0 +1,34 @@
+
+
+// card background
+.card .card-body {
+    background-color: #F2E479;
+}
+
+
+.experience .m-2 .border,
+.experience .col.border-right {
+    border-color: #384023 !important;
+}
+
+.experience .m-2 .border.exp-fill {
+    background-color: #384023 !important; }
+
+
+
+// card title and subtitle
+.card .card-title {
+    // page title color
+    color: #384023 !important;
+}
+
+
+// card text
+.card .card-body div {
+    color: #384023 !important;
+}
+
+// card meta/date/description
+.card .card-body p {
+    color: #384023 !important;
+}
