@@ -14,23 +14,29 @@ subtitle = ""
 # 
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 
-#[[feature]]
-#  icon = "r-project"
-#  icon_pack = "fab"
-#  name = "R"
-#  description = "90%"
+[[feature]]
+  icon = "skills_programming"
+  icon_pack = "custom"
+  name = ""
+  description = "Programming"
   
-#[[feature]]
-#  icon = "chart-line"
-#  icon_pack = "fas"
-#  name = "Statistics"
-#  description = "100%"  
+[[feature]]
+  icon = "skills_hardware"
+  icon_pack = "custom"
+  name = ""
+  description = "Hardware"  
   
-#[[feature]]
-#  icon = "camera-retro"
-#  icon_pack = "fas"
-#  name = "Photography"
-#  description = "10%"
+[[feature]]
+  icon = "skills_multimedia"
+  icon_pack = "custom"
+  name = ""
+  description = "Multimedia"
+
+[[feature]]
+  icon = "skills_productivity"
+  icon_pack = "custom"
+  name = ""
+  description = "Productivity"
 
 # Uncomment to use emoji icons.
 # [[feature]]
@@ -51,3 +57,6 @@ subtitle = ""
 +++
 
 {{< figure library="true" src="skills_programming.svg" title="" >}}
+{{< figure library="true" src="skills_hardware.svg" title="" >}}
+{{< figure library="true" src="skills_multimedia.svg" title="" >}}
+{{< figure library="true" src="skills_productivity.svg" title="" >}}
