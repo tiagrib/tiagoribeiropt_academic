@@ -50,4 +50,4 @@ subtitle = ""
 
 +++
 
-{{< figure library="true" src="skills_programming.svg" title="Programming Skills" >}}
+{{< figure library="true" src="skills_programming.svg" title="" >}}
