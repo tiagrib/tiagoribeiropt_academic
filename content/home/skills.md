@@ -14,29 +14,29 @@ subtitle = ""
 # 
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 
-[[feature]]
-  icon = "skills_programming"
-  icon_pack = "custom"
-  name = ""
-  description = "Programming"
+#[[feature]]
+#  icon = "skills_programming"
+#  icon_pack = "custom"
+#  name = ""
+#  description = ""
   
-[[feature]]
-  icon = "skills_hardware"
-  icon_pack = "custom"
-  name = ""
-  description = "Hardware"  
+#[[feature]]
+#  icon = "skills_hardware"
+#  icon_pack = "custom"
+#  name = ""
+#  description = ""  
   
-[[feature]]
-  icon = "skills_multimedia"
-  icon_pack = "custom"
-  name = ""
-  description = "Multimedia"
+#[[feature]]
+#  icon = "skills_multimedia"
+#  icon_pack = "custom"
+#  name = ""
+#  description = ""
 
-[[feature]]
-  icon = "skills_productivity"
-  icon_pack = "custom"
-  name = ""
-  description = "Productivity"
+#[[feature]]
+#  icon = "skills_productivity"
+#  icon_pack = "custom"
+#  name = ""
+#  description = ""
 
 # Uncomment to use emoji icons.
 # [[feature]]
@@ -56,7 +56,4 @@ subtitle = ""
 
 +++
 
-{{< figure library="true" src="skills_programming.svg" title="" >}}
-{{< figure library="true" src="skills_hardware.svg" title="" >}}
-{{< figure library="true" src="skills_multimedia.svg" title="" >}}
-{{< figure library="true" src="skills_productivity.svg" title="" >}}
+{{< figure library="true" src="skills.svg" title="" >}}
