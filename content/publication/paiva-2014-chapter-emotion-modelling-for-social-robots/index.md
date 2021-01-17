@@ -33,5 +33,5 @@ publishDate: '2021-01-16T17:16:06.445381Z'
 publication_types:
 - '6'
 abstract: ''
-publication: '*The Oxford Handbook of Affective Computing*'
+publication: 'book chapter in *The Oxford Handbook of Affective Computing*.  Oxford University Press. ISBN 978-0-199-94223-7'
 ---
