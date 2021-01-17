@@ -32,5 +32,6 @@ publishDate: '2021-01-16T17:16:27.657139Z'
 publication_types:
 - '6'
 abstract: ''
-publication: 'chapter in *Modelling Human Motion*. Springer International Publishing. ISBN 978-3-030-46732-6'
+publication: "chapter in **Modelling Human Motion**.<br>
+*Springer International Publishing*. ISBN 978-3-030-46732-6"
 ---

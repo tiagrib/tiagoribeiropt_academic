@@ -34,7 +34,6 @@ url_video: ""
 slides: ""
 
 ---
-
 {{< figure src="emote-title.png" title="" >}}
 
 The EMOTE project was a three-year EU-FP7 project that aimed at creating empathic artificial tutors to be used in real classrooms.

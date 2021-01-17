@@ -33,5 +33,6 @@ publishDate: '2021-01-16T17:16:29.367589Z'
 publication_types:
 - '6'
 abstract: ''
-publication: 'book chapter in *Human-Robot Interaction: Evaluation Methods and Their Standardization.* Springer International Publishing. ISBN 978-3-030-42306-3'
+publication: 'book chapter in **Human-Robot Interaction: Evaluation Methods and Their Standardization.**<br>
+*Springer International Publishing*. ISBN 978-3-030-42306-3'
 ---
