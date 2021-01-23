@@ -1,9 +1,9 @@
 ---
 title: Adelino
-summary: An example of using the in-built project page.
+summary: '2017-<br>my Craft Robot'
 tags:
 - Robots
-#date: "2016-04-27T00:00:00Z"
+date: "2021-01-23T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
 external_link: ""
@@ -20,15 +20,6 @@ image:
   preview_only: false
   alt_text: The Adelino Robot.
 
-#links:
-#- icon: twitter
-#  icon_pack: fab
-#  name: Follow
-#  url: https://twitter.com/georgecushen
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
 
 # Slides (optional).
 #   Associate this project with Markdown slides.
@@ -38,12 +29,31 @@ url_video: ""
 slides: ""
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+Adelino is a craft robot, that was built using wood and hobby-grade servos, to demonstrate how well the Nutty Tracks and ERIK can perform even on a low-fidelity robot.
 
-Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.
+{{< figure src="adelino_poses.jpg" title="The Adelino robot, in four different expressive postures. The top row shows front views of each posture. Under each is the corresponding side view." >}}
+{{< vimeo 232300140 >}}
+*Demonstration of the ERIK Expressive Kinematics technique with Adelino
+(published in the ACM International Conference in Multi-modal Interaction, ICMI’17)*
 
-Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.
 
-Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.
 
-Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.
+Following on *Hoffman & Ju, 2014*, we started by designing the concept of the robot using 3d animation software.
+The robot was designed as a line shape, as it is common for traditional and 3D animators to start their learning process by animating lines of action.
+These lines of action are “the first line indicated in a pose, that shows the basic overall posture, prior to adding the rest of the details” (*Goldberg, 2008*).
+The lines are used to design the attitude poses of a character – ones “that convey what a character is feeling while he’s moving”.
+We can think of the line of action of a humanoid character to be its spine, grounded by its dominant leg.
+Based on this concept, we created a robotic line of action, with a minimum amount of degrees of freedom (DoFs).
+We added however, a face-like tip on the line in order to allow it to express gazing behaviour.
+After our design concept phase, during which we tested some 3D animations with the character, we settled with five DoFs.
+In order to overcome typical low-end servos’ limitations of rotating only 90 degrees to each side, the head was changed to be nearly symmetric along its vertical axis.
+Instead of having a front or back side, depending on the target posture and gaze direction, the robot could twist and turn upon itself, using the head upside down, while still having the same appearance.
+
+{{< figure src="adelino_concept-768x452.png" title="The concept design of the Adelino robot. It was initially modelled and animated using 3D animation software, to explore the size and placement of each segment and articulation, in order to maximize its expressive capabilities." >}}
+
+
+### References
+
+Eric Goldberg. 2008. **Character Animation Crash Course!** *Silman-James Press*, ISBN 978-1-879505-97-1.
+
+Guy Hoffman and Wendy Ju. 2014. **Designing Robots With Movement in Mind.** *Journal of Human-Robot Interaction, Vol. 3, Issue 1 (February 2014)*, 91-122.https://doi.org/10.5898/JHRI.3.1.Hoffman

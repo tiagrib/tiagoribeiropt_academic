@@ -1,30 +1,15 @@
 ---
 title: EMOTE project
 subtitle: embodied perceptive tutors for empathy-based learning
-summary: 2013-2015
+summary: '2013-2015<br>embodied perceptive tutors for empathy-based learning'
 tags:
 - EUresearch
-date: "2016-04-27T00:00:00Z"
-lastmod: "2016-04-27T00:00:00Z"
-
-# Optional external URL for project (replaces project detail page).
-external_link: ""
-
+date: "2021-01-23T00:00:00Z"
 
 
 image:
   caption: "featuring the NAO robot. © Tiago Ribeiro"
   focal_point: Smart
-
-links:
-- icon: twitter
-  icon_pack: fab
-  name: Follow
-  url: https://twitter.com/georgecushen
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
 
 # Slides (optional).
 #   Associate this project with Markdown slides.
