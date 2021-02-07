@@ -4,7 +4,7 @@ subtitle: embodied perceptive tutors for empathy-based learning
 summary: '2013-2015<br>embodied perceptive tutors for empathy-based learning'
 tags:
 - EUresearch
-date: "2021-01-23T00:00:00Z"
+date: 2021-01-23T00:00:00Z
 
 
 image:

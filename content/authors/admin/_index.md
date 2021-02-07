@@ -21,7 +21,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Eclectic scientist and engineer striving to breathe the Illusion of Life into autonomous characters
 
 interests:
 - Artificial Intelligence

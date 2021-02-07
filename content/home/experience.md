@@ -72,6 +72,17 @@ css_class = ""
 * Datascience tasks using Google's BigQuery SQL, DataStudio and Spreadsheets. 
 """
 
+[[experience]]
+  title = "HRI Architecture Consultor"
+  company = "Högskolan Väst (University West)"
+  company_url = "https://www.researchgate.net/project/START-Student-Tutor-And-Robot-Tutee"
+  location = "Trollhättan, Sweden"
+  date_start = "2018-09-01"
+  date_end = "2018-09-30"
+  description = """**University College**
+
+Provided consulting on the HRI architecture aimed at the use of the NAO and Pepper robots
+"""
 
 [[experience]]
   title = "Robot Animation &amp; Unreal Engine Developer"
