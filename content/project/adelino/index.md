@@ -4,6 +4,7 @@ summary: '2017-<br>my Craft Robot'
 tags:
 - Robots
 date: "2021-01-23T00:00:00Z"
+date: "2021-01-23T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
 external_link: ""

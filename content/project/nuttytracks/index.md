@@ -4,7 +4,8 @@ subtitle: www.nuttytracks.com
 summary: '2013-<br>Programmable symbolic animation system for robot animation.'
 tags:
 - Software
-date: "2021-01-23T00:00:00Z"
+date: '2020-01-23T00:00:00Z'
+lastmod: '2021-01-24T00:00:00Z'
 
 
 image:
