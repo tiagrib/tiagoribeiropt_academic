@@ -1,37 +1,44 @@
 +++
-# A Recent Publications section created with the Pages widget.
-# This section displays recent blog posts from `content/publication/`.
+# A Recent Blog Posts section created with the Pages widget.
+# This section displays recent blog posts from `content/post/`.
 
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 100  # Order that this section will appear.
+weight = 60  # Order that this section will appear.
 
-title = "Recent Publications"
+title = "Knowledge Base"
 subtitle = ""
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
-  page_type = "publication"
+  page_type = "book"
   
   # Choose how much pages you would like to display (0 = all pages)
-  count = 5
+   count = 5
   
   # Choose how many pages you would like to offset by
-  offset = 0
+  # offset = 0
 
   # Page order. Descending (desc) or ascending (asc) date.
-  order = "desc"
+  # order = "desc"
 
   # Filter posts by a taxonomy term.
-  [content.filters]
-    tag = ""
-    category = ""
-    publication_type = ""
-    author = ""
-    exclude_featured = true
+  # [content.filters]
+  #  tag = ""
+  #  category = ""
+  #  publication_type = ""
+  #  author = ""
+  #  exclude_featured = false
+
+  # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
+
+
   
 [design]
+ # Choose how many columns the section has. Valid values: 1 or 2.
+  columns = "2"
+
   # Toggle between the various page layout types.
   #   1 = List
   #   2 = Compact
@@ -44,7 +51,7 @@ subtitle = ""
   #   Uncomment (by removing `#`) an option to apply it.
   #   Choose a light or dark text color by setting `text_color_light`.
   #   Any HTML color name or Hex value is valid.
-    
+  
   # Background color.
   # color = "navy"
   
@@ -65,10 +72,6 @@ subtitle = ""
  
  # CSS class.
  css_class = ""
-
-# {{% callout note %}}
-# Quickly discover relevant content by [filtering publications](./publication/).
-# {{% /callout %}}
 +++
 
-
+{{< cite page="/courses/nutty-motion-filter" view="3" >}}

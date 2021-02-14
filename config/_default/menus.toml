@@ -14,6 +14,11 @@
   weight = 20
 
 [[main]]
+  name = "Knowledge"
+  url = "#kb"
+  weight = 40
+
+[[main]]
   name = "Publications"
   url = "#featured"
   weight = 30
