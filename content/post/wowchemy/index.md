@@ -1,7 +1,7 @@
 ---
 # Documentation: https://wowchemy.com/docs/managing-content/
 
-title: "Wowchemy, It's like LaTex but for websites: How to create your academic website"
+title: "Wowchemy, It's like LaTex but for websites: How to create your academic website like this"
 subtitle: "https://wowchemy.com"
 summary: "Any academic needs a good website so I want to share an overview and workflow with the community on how to create a website like this one."
 authors: []
