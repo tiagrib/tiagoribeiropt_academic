@@ -44,7 +44,6 @@ function render() {
 function resize() {
     var w = container.clientWidth;
     var h = container.clientHeight;
-    console.log("resize", w, h)
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     controls.handleResize();
@@ -58,7 +57,6 @@ function onWindowResize() {
     renderer.domElement.style.height = h
     render();
 }
-
 
 function createScene() {
 	scene = new THREE.Scene();
@@ -109,7 +107,7 @@ function initViewer(GLcontainer) {
     createRenderer(container);
     createScene();
     resize(); 
-    window.addEventListener( 'resize', onWindowResize, true );
+    window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', keyup, false );
     stats = new Stats();
     document.body.appendChild( stats.dom );
