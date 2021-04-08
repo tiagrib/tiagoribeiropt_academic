@@ -8,7 +8,7 @@ var TrajectoryEnum = {
 
 var settings;
 var gui = new dat.GUI({ load: getPresetJSON(), preset: 'Paper-D', autoPlace: false});
-var transferChart;
+
 var plotCharts = []
 
 var viewer;
@@ -90,7 +90,8 @@ function makeRandomTrajectory(count=10) {
 function runFilterViewer(	glContainer, controlsContainer, transferContainer, 
 							plotContainerX, plotContainerY, plotContainerZ, 
 							eqOrderDiv, equationDiv, equationParamsDiv) {
-	viewer = initViewer(glContainer);
+	
+								viewer = initViewer(glContainer);
 	div_eq_order = eqOrderDiv
 	div_eq = equationDiv
 	div_eqparam = equationParamsDiv
@@ -115,23 +116,36 @@ function runFilterViewer(	glContainer, controlsContainer, transferContainer,
 	animate();
 }
 
+function runFilterViewer2(	glContainer, controlsContainer, 
+							plotContainerX, plotContainerY, plotContainerZ) {
+								
+	viewer = initViewer(glContainer);
+
+	fontSizeMultiplier = 1.0/dpr
+
+	makeGUI(viewer.controls, controlsContainer);
+	makeTrajectories()
+	createGeometry();
+	var plotContainers = [plotContainerX, plotContainerY, plotContainerZ]
+	for (var i=0;i<channelsList.length;i++) {
+	c  = channelsList[i]
+	console.log('Create channel', c)
+	filters3[i] = new NuttyFilter(c);
+	outputChannels[i] = [0,0,0,0];
+	}
+	update();
+	makeFilterGraphs(plotContainers)
+	filterChanged()
+	updateFilterEquations()
+	updateTrajectoryGUI()
+	animate();
+}
+
 function getXYZLabel(i) {
 	return i==0 ? "X" : (i==1 ? "Y" : "Z" )
 }
 
-function makeFilterGraphs(transferContainer, plotContainers) {
-	transferChart = makeBaseChart({
-		container:transferContainer, 
-		title:"", 
-		yLabels: ['H(x)'],
-		scaleTypeX:'logarithmic', 
-		scaleTypeY:'logarithmic'
-	});
-
-	pushDataset(transferChart, [], 'H(x)', 'rgba(20, 150, 50, 1)', 3, 0, 'logarithmic', 'logarithmic', true, 0, false, '')
-	pushDataset(transferChart, [], '\u03bb(H(x))', 'rgba(150, 50, 50, 1)', 3, 0, 'logarithmic', 'logarithmic', false, 0, false, '')
-	pushDataset(transferChart, [], 'y=x', 'rgba(150, 150, 150, 1)', 2, 0, 'logarithmic', 'logarithmic', false, 0, true, '')
-
+function makeFilterGraphs(plotContainers) {
 	for (i=0;i<plotContainers.length;i++) {
 		plotChart = makeBaseChart({
 			container:plotContainers[i], 
@@ -368,19 +382,12 @@ function string_of_enum(e,value)
 }
 
 function updateFilterEquations() {
-	div_eq_order.innerText = "- " + string_of_enum(FilterOrderEnum, settings.filterSettings.Order) + " Order"
-	div_eq.innerText = filters3[0].ToLatex(settings)
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub,div_eq]);
 }
 
 function filterChanged(value) {
 	for (var i=0;i<channelsList.length;i++) {
 		filters3[i] = configureFilter(filters3[i])
 	}
-	div_eqparam.innerHTML  = filters3[0].ToHtmlParams(settings, 12/dpr)
-	//div_eqparam.style.setProperty("font-size", parseFloat(getComputedStyle(document.getElementById("containerEquationParams")).fontSize)*(1.0/dpr) + "px");
-	/*div_eqparam.innerText = filters3[0].ToLatexParams(settings.filterSettings.Order)
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub,div_eqparam]);*/
 	updateGraphs(value);
 	if (settings.controls.ResetObjectOnFilterSettingsChange){
 		resetObject()
@@ -396,7 +403,6 @@ function configureFilter(filter) {
 }
 
 function updateGraphs(value, resolution=4000, performUpdateMotionGraph=true) {
-	updateTransferChart(value, resolution)
 	if (performUpdateMotionGraph) updateMotionGraph(value)
 }
 
@@ -523,64 +529,7 @@ function updateMotionGraph(value, resolution=1000)
 	}	
 }
 
-function updateTransferChart(value, resolution=1000)
-{
-	if (loadingPreset) return
-	xy = []
-	newData = []
-	newDataLimited = []
-	minY = settings.filterLimits.MaxV;
-	maxY = 0;
-	maxX = 0;
-	if (settings.filterSettings.Stabilizer) {	
-		filter = new NuttyFilter(0);
-		filter = configureFilter(filter)
-		filter.Reset(0)
-		for (i=0;i<resolution;i++) {
-			vX = i/resolution;
-			vX = 2*settings.filterLimits.MaxV*Math.pow(vX, 1000*vX+4)
-			fX = filter.stabilizer(vX)
-			//b=1.0
-			//a=1.0
-			//fX = (Math.tanh(Math.pow(vX/b,a)-Math.PI)+1)/2
 
-			vY = vX*fX
-
-			vX = Math.max(0.0001, vX)
-			vY = Math.max(0.0001, vY)
-
-			if (i==resolution-1){
-				xPow = Math.pow(10, Math.round(vX).toString().length-1)
-				yPow = Math.pow(10, Math.round(vY).toString().length-1)
-				maxX = Math.max(maxX, Math.ceil(vX/xPow)*xPow*1.0);
-				maxY = Math.max(maxY, Math.ceil(vY/yPow)*yPow*1.0);
-			}
-			else{
-				minY = Math.min(minY, vY);
-			}
-			maxY = Math.max(maxY, vY);
-			maxX = Math.max(maxX, vX);
-			if (i==0) {
-				newData.push({x:0, y:0})
-				newDataLimited.push({x:0, y:0})
-				xy.push({x:0, y:0})
-			}else{
-				newData.push({x:vX, y:vY});
-				newDataLimited.push({x:vX, y:limit(vY, settings.filterLimits.MaxV, true)});
-				xy_value = settings.filterLimits.MaxV*i/resolution
-				xy.push({x:xy_value, y:xy_value})
-			}
-		}
-	}
-	//console.log(newData)
-	transferChart.config.options.scales.yAxes[0].ticks.max = settings.filterLimits.MaxV;
-	transferChart.config.options.scales.yAxes[0].ticks.min = minY;
-	transferChart.config.options.scales.xAxes[0].ticks.max = settings.filterLimits.MaxV*1;
-	transferChart.data.datasets[0].data = newData;
-	transferChart.data.datasets[1].data = newDataLimited;
-	transferChart.data.datasets[2].data = xy;
-	transferChart.update(0)
-}
 
 function CommitGraphPoint(vX, vY, minX, minY, maxX, maxY, isLast) {
 	if (isLast) {

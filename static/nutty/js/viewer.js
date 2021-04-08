@@ -28,6 +28,13 @@ function createRenderer() {
     return renderer;
 }
 
+function forceRedraw(element){
+    var disp = element.style.display;
+    element.style.display = 'none';
+    var trick = element.offsetHeight;
+    element.style.display = disp;
+};
+
 function update() {
     //resize()
     //objects['lightMain'].position.set(camera.position.x,camera.position.y,camera.position.z);
@@ -42,8 +49,12 @@ function render() {
 }
 
 function resize() {
-    var w = container.clientWidth;
-    var h = container.clientHeight;
+    //var w = document.documentElement.clientWidth
+    //var h = document.documentElement.clientHeight
+    forceRedraw(document.getElementById("glView"));
+    var w = document.getElementById("glView").clientWidth;
+    var h = document.getElementById("glView").clientHeight;
+    console.log("resize", w, h)
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     controls.handleResize();
@@ -57,6 +68,7 @@ function onWindowResize() {
     renderer.domElement.style.height = h
     render();
 }
+
 
 function createScene() {
 	scene = new THREE.Scene();
@@ -107,7 +119,7 @@ function initViewer(GLcontainer) {
     createRenderer(container);
     createScene();
     resize(); 
-    window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener( 'resize', onWindowResize, true );
     window.addEventListener( 'keydown', keyup, false );
     stats = new Stats();
     document.body.appendChild( stats.dom );

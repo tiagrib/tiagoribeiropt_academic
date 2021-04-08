@@ -3,248 +3,13 @@
 		<title>Nutty Motion Filter Viewer</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<style>
-			canvas { width: 100%; height: 100% }
-			html, body {
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-				font-family:Monospace;
-			}
-			
-			body {
-				/*color: #000;*/
-				font-family: "Trebuchet MS", Helvetica, sans-serif;
-				font-size:10px;
-				text-align:center;
-				font-weight: normal;
-				background-color: #aaa;
-				margin: 0px;
-			}
-			.info {
-				color:#FFF;
-				/*position: absolute;*/
-				grid-column: 1 / span 5;
-				grid-row: 1;
-				/*top: 0px; width: 100%;*/
-				/*padding: 5px;*/
-				/*box-sizing: border-box;*/
-				font-size:12px;
-				width:100vw;
-				/*height:10vh;*/
-			}
-			a:link  {
-    			color: cyan;
-			}
-			a:visited {
-    			color: cyan;
-			}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="nmf_web.css">
 
-			.MathJax { 
-				font-size: 1.3em !important; 
-			}
-			#main_container {
-				display: grid;
-				grid-template-columns: 250px 150px 400px 250px 100vw;
-				grid-template-rows: 50px 20px 200px 15vh 15vh 30vh;
-				grid-gap: 2px;
-				background-color: #303030;
-			  	width: 100vw;
-			  	height: 100vh;
-				padding: 2px;
-			}
 
-			.containerGL {
-				grid-column: 5;
-				grid-row: 2 / span 3;
-				width:100%;
-				margin-right: 0px;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				
-				/*height:48vh;*/
-			}
-			.containerGraphX {
-				position: relative;
-				text-align:center;
-				margin: 0;
-				margin-top: 10px;
-				margin-right: 10px;
-				margin-bottom: 10px;
-				color: #000;
-				background-color: #EEE;
-				grid-column: 5 / span 1;
-				grid-row: 5 / span 2;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:49vw;
-				height:45vh;*/
-			}
-			.containerControls {
-				grid-column: 4;
-				grid-row: 2 / span 5;
-				position: relative;
-				transform-origin: top left;
-				/*margin-top: 10;
-				text-align:center;
-				position: relative;*/
-				/*width:10vw;*/
-			}
-			.containerGraphTransfer {
-				position: relative;
-				text-align:center;
-				margin: 0px;
-				margin-bottom: 10;
-				color: #000;
-				background-color: #EEE;
-				grid-column: 1 /span 3;
-				grid-row: 4 / span 2;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:25vw;
-				height:35vh;*/
-			}
-			#containerEquationsTitleText {
-				font-size:10px;
-				color: #000;
-			}
-			#eq_order { 
-				font-size:10px;
-				color: #000;	
-			}
-			#containerEquationParamsTitle { 
-				font-size:10px;
-				color: #000;	
-			}
-			
-			.containerEquationsTitle {
-				position: relative;
-				text-align:center;
-				margin: 0px;
-				color: #000;
-				font-size:10px;
-				/*font-family: "Trebuchet MS", Helvetica, sans-serif;*/
-				font-weight: normal;
-				background-color: #EEE;
-				grid-column: 1 / span 3;
-				grid-row: 2 / span 1;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:25vw;
-				height:18px;*/
-			}
-			.containerEquation {
-				position: relative;
-				text-align:center;
-				margin: 0px;
-				color: #111;
-				background-color: #EEE;
-				grid-column: 2 / span 2;
-				grid-row: 3 / span 1;
-				font-family:Monospace;
-				font-size:13px;
-				text-align:center;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:15vw;
-				height:140px;*/
-			}
-			.containerEquationParams {
-				position: relative;
-				text-align:center;
-				margin: 0px;
-				color: #111;
-				background-color: #EEE;
-				grid-column: 1 / span 1;
-				grid-row: 3 / span 1;
-				font-family:Monospace;
-				font-size:13px;
-				text-align:center;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:10vw;
-				height:140px;*/
-			}
-			
-			.containerGraphY {
-				position: relative;
-				text-align:center;
-				margin-top: 10px;
-				color: #000;
-				background-color: #EEE;
-				grid-column: 1/span 2;
-				grid-row: 6
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:23vw;
-				height:25vh;*/
-			}
-			.containerGraphZ {
-				position: relative;
-				text-align:center;
-				margin: 0;
-				margin-top: 10px;
-				color: #000;
-				background-color: #EEE;
-				grid-column: 3;
-				grid-row: 6;
-				box-shadow: 2px 2px 15px rgba(0, 0, 0, .5);
-				/*width:23vw;
-				height:18vh;*/
-			}
-			
-			.graphCanvas {
-				/*border: 1px dotted blue;*/
-				background-color: #EEE;
-			}
+        <script type="text/javascript" src="js/lib/jquery-3.4.1.min.js"></script>
 
-			.longtext {
-		        line-height: 13px !important;
-		        height: 40px !important;
-		    }
-		    .full_width {
-		        width: 100% !important;
-		    }
-
-		    .overlay {
-			  position: fixed; /* Sit on top of the page content */
-			  display: none; /* Hidden by default */
-			  width: 100%; /* Full width (cover the whole page) */
-			  height: 100%; /* Full height (cover the whole page) */
-			  top: 0;
-			  left: 0;
-			  right: 0;
-			  bottom: 0;
-			  color: #FFF;
-			  background-color: rgba(30,30,30,1.0); /* Black background with opacity */
-			  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-			  cursor: pointer; /* Add a pointer on hover */
-			   
-			}
-
-			.overlay_text {
-				position: absolute;
-				text-align: center;
-  				top: 10%;
-  				left: 20%;
-  				right:20%;
-  				font-size: 10pt;
-  				/*transform: translate(-50%, -50%);
-
-			}
-			
-		</style>
-
-		<script type="text/javascript" src="js/lib/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="js/lib/jquery.balloon.min.js"></script>
-
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-		    extensions: ["tex2jax.js"],
-		    jax: ["input/TeX","output/HTML-CSS"],
-		    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
-		    "HTML-CSS": {matchFontHeight: false},
-			  SVG: {matchFontHeight: false},
-			  CommonHTML: {matchFontHeight: false}
-		  });
-		</script>
-		<script type="text/javascript" src="js/lib/MathJax-master/MathJax.js"></script>
-
-		<script type="text/javascript">
+        <script type="text/javascript">
 		
 			//https://www.codeproject.com/Tips/201899/String-Format-in-JavaScript
 			// This is the function.
@@ -275,260 +40,233 @@
 			//str = str.format(["sea", "sells", "shells", "shore"]);
 			//alert(str);
 			
-		</script>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141759629-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-141759629-1');
-		</script>
-
-	</head>
+        </script>
+    </head>
 	<body>
-		<link rel="stylesheet" href="js/lib/balloon.css">
-
-		 <div id="overlayWarning", class="overlay">
-		 	<div class="overlay_text">
-		 		You seem to be using a High DPI display with a custom scale setting.<br>
-		 		The elements in this page will be resized to fit your screen but may, however seem off.<br>
-		 		If it deteriorates your experience with the simulator, please consider disabling the High DPI custom scale setting.<br>
-		 		<br>
-		 		<button onclick="hideWarning()">Click here to proceed.</button>
-		 	</div>
-		 </div> 
-		 <div id="overlay", class="overlay">
-		 	<div class="overlay_text">
-		 		Your screen seems too small to display the Nutty Motion Filter simulator.<br>
-		 		Please try it on a larger screen, such as a laptop or a desktop.<br><br>
-		 		The screen should be at least 1080p, although an even higher resolution is recommended.<br>
-		 		If you use a Mac, then maybe your DPI scaling is preventing this page from displaying currectly.<br>
-		 		<a href="motionfilter.html?force=true">Click here to force the page to display.</a> <br>
-		 		<a href="http://tiagoribeiro.pt" target="_blank" rel="noopener"><small>tiagoribeiro.pt</small></a> 
-		 	</div>
-		 </div> 
-		<div class="grid-container", id="main_container">
-			<div class="info">
-				<table align="center" class="info", id="info">
-					<tr align="center"><td>
-						<strong><a href="http://tiagoribeiro.pt" target="_blank" rel="noopener">tiagoribeiro.pt</a> - <span style="color: #f2bc18">Nutty Motion Filter Viewer</span></strong><br>
-						This visualizer/simulator allows you to see how the Nutty Motion Filter acts depending on the given filter parameters.
-						Additionally, it will show you how the filter equations for the specified filter variant.<br>
-						Use the control panel at the center of the page to select a preset from the drop-down.
-						Alternatively, tweak the filter, and to see the response both on the charts and on the 3D Viz.<br>
-						The Nutty Motion Filter is explained in detail in Chapter 6 of the arXiv paper <a href="https://arxiv.org/abs/1904.02898" target="_blank", rel="noopener">Nutty-based Robot Animation -- Principles and Practices</a><br>
-						For simplification, the filter version presented here does not impose positional limits. Please refer to the paper for that version.
-
-					</td><td align="left">
-						<strong><span style="color: #f2bc18">3D Viz INSTRUCTIONS</span> </strong><br>
-						Rotate View: MOVE mouse &amp; LEFT-button; Zoom: WHEEL\MIDDLE-button.<br>
-						PRESS keyboard R: Reset camera view. <br>
-						You can also reset the camera and object motion using the buttons at the bottom of the central control panel.<br>
-					</td></tr>
-				</table>
-			</div>
-
-			<div class="grid-item containerGL", id="GLView"></div>
-			<div class="grid-item">
-				<div class="containerControls", id="ControlsView"></div>
-			</div>
-  			<div class="grid-item containerGraphTransfer">
-  				Transfer Function Response H(x) used for Motion Character Control <!--<button id="save_button_transfer">Save Png</button>--><br>
-  				<canvas id="transferChart" class="graphCanvas"></canvas>
-  			</div>
-  			<div class="grid-item containerEquationsTitle">
-  				<table align="center", id="containerEquationsTitle">
-  				<tr>
-  					<th align="center"><p id="containerEquationsTitleText">Nutty Motion Filter Equation </p></th>
-  					<th> <div id="eq_order"></div></th>
-  				</tr>
-  				</table>
-  			</div>
-
-  			<div class="grid-item containerEquation", id="containerEquation", style="font-size: 100%";>
-  				<p id ="equation"></p>
-  			</div>
-
-  			<div class="grid-item containerEquationParams", id="containerEquationParams">
-  				<table align="center">
-  				<tr><th align="center" id="containerEquationParamsTitle">Parameters</th></tr>
-  				<tr><td><p id ="equationParameters">params</p></td></tr>
-  				</table>
-  			</div>
-  			
-  			<div class="grid-item containerGraphX", id="cglb">
-  				Motion Filter Plot X <!--<button id="save_button_x">Save Png</button>--><br>
-  				<canvas id="plotChartX" class="graphCanvas"></canvas>
-  			</div>
-  			<div class="grid-item containerGraphY", id="cgrt">
-  				Motion Filter Plot Y<br>
-  				<canvas id="plotChartY" class="graphCanvas"></canvas>
-  			</div>
-  			<div class="grid-item containerGraphZ", id="cgrb">
-  				Motion Filter Plot Z<br>
-  				<canvas id="plotChartZ" class="graphCanvas"></canvas>
-  			</div>
-		</div>
-
-		<!--<script src="js/three.js"></script>-->
-		<script src="js/lib/stats.min.js"></script>
-		<script src="js/lib/three.min.js"></script>
-		<script src="js/lib/dat.gui.min.js"></script>
-		<script src="js/lib/TrackballControls.js"></script>
-		<script src="js/nuttyAux.js"></script>
-		<script src="js/nuttyFilter.js"></script>
-		<script src="js/vectorStateMachine.js"></script>
-		<script src="js/viewer.js"></script>
-		<script src="js/filterViewer.js"></script>
-		<script src="js/lib/Chart.js"></script>
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
-		<script src="js/lib/FileSaver.min.js"></script>
-		<script>
-
-			function hideWarning() {
-				document.getElementById("overlayWarning").style.display = "none";
-				makeHelpBalloons()
-			}
-
-			function resizeElementWidthRatio(elem_name, ratio) {
-				elem = document.getElementById(elem_name)
-				var get_style = elem.currentStyle || window.getComputedStyle(elem)
-				new_val = parseInt(get_style.getPropertyValue('width'))
-				new_val = "{0}px".format([new_val*ratio])
-				elem.style.setProperty('width', new_val)
-			}
-
-			function scalePage(ratio) {
-				document.body.style.setProperty("font-size", parseFloat(getComputedStyle(document.body).fontSize)*ratio + "px");
-				document.getElementById("containerEquation").style.fontSize = 100*ratio+"%";
-				document.getElementById("ControlsView").style.transform = "scale("+ratio+")";
-				eqs = document.getElementById("equation")
-				eqs.style.fontSize = 10*ratio + "px";
-			
-				elementsList = ["info", "containerEquation", "containerEquationParams", "containerEquationsTitleText", "eq_order", "containerEquationParamsTitle"]
-				for (e in elementsList) {
-					//document.getElementById(elementsList[e]).style.setProperty("font-size", parseFloat(getComputedStyle(document.getElementById(elementsList[e])).fontSize)*ratio + "px")
-					document.getElementById(elementsList[e]).style.setProperty("font-size", parseFloat(getComputedStyle(document.getElementById(elementsList[e])).fontSize)*ratio + "px");
-				} 
-				
-			}
-			var dpr = window.devicePixelRatio || 1;
-			var h = document.documentElement.clientHeight
-			if (h*dpr>1080) {
-				dpr=1
-			}
-			
-			single_run_balloon_callbacks = []
-
-			function showHelpBalloon(element, text, position, use_html=false, callback=undefined) {
-				e = $('#'+element)
-				e.showBalloon({ contents:text,html:use_html, tipSize: 30,  offsetY: -30, position: position, css: { border: 'solid 4px #44abda',padding: '3px',fontSize: '150%', fontWeight: 'bold', backgroundColor: '#f2bc18',color: '#000', opacity: "0.95" }});
-				e.on("click", function(text_generator) {
-					if ($(this).attr('id')=="ControlsView") {
-						$("#GLView").hideBalloon();	
-					}
-					$(this).hideBalloon();
-				})
-			}
 
 
-			function makeHelpBalloons() {
-				showHelpBalloon("GLView", "<center>Click and drag the viewport to see the motion in other angles.<br> The black ball represents the input signal (set-point) along time, <br>while the grey torus knot simulates the result of the filter while trying to reach the current set-point.<br><br>By selecting different filter settings, <br>you can see how smoothly and responsive the filter acts upon each new set-point.</center>", "bottom", true);
-				showHelpBalloon("ControlsView", "<center>Use the controls at the center of the page <br>to change the simulated trajectory's duration, length or type, <br> or the motion filter parameters (Character Control and Kinematic Limits groups) <br> and watch the effect both on the graphs and on the 3D visualizer.<br><br>Alternatively, you can select one of the presets from the drop-down on the top.</center>", "top left", true);
-			}
+<div id="overlayWarning", class="overlay">
+    <div class="overlay_text">
+        You seem to be using a High DPI display with a custom scale setting.<br>
+        The elements in this page will be resized to fit your screen but may, however seem off.<br>
+        If it deteriorates your experience with the simulator, please consider disabling the High DPI custom scale setting.<br>
+        <br>
+        <button onclick="hideWarning()">Click here to proceed.</button>
+    </div>
+</div> 
+<div id="overlay", class="overlay">
+    <div class="overlay_text">
+        Your screen seems too small to display the Nutty Motion Filter simulator.<br>
+        Please try it on a larger screen, such as a laptop or a desktop.<br><br>
+        The screen should be at least 1080p, although an even higher resolution is recommended.<br>
+        If you use a Mac, then maybe your DPI scaling is preventing this page from displaying currectly.<br>
+        <a href="motionfilter2.html?force=true">Click here to force the page to display.</a> <br>
+        <a href="http://tiagoribeiro.pt" target="_blank" rel="noopener"><small>tiagoribeiro.pt</small></a> 
+    </div>
+</div> 
 
-			window.onload = function() {
-				
-				var w = document.documentElement.clientWidth
-				var h = document.documentElement.clientHeight
-				forceEvenIfTooBig = location.search.split('force=')[1]
-				forceEvenIfTooBig = !(forceEvenIfTooBig==undefined)
-				if( dpr*h < 800 && !forceEvenIfTooBig){ 
- 					document.getElementById("overlay").style.display = "block";
-				} else{
-					
-					scalePage(1.0/dpr)
-					document.getElementById("overlay").style.display = "none";
-					if (dpr>1) {
-						document.getElementById("overlayWarning").style.display = "block";
-					}
-					else{
-						document.getElementById("overlayWarning").style.display = "none";
-						makeHelpBalloons()
-					}
-					var squeeze_left = 1.1
-					var eq_left_width = 250/dpr
-					var eq_mid_width = 80/dpr
-					var eq_right_width = 350/dpr
-					var controls_width = 250/dpr
+<div id="divMain">
 
-					var fixed_w = eq_left_width*squeeze_left+eq_mid_width*squeeze_left+eq_right_width*squeeze_left+controls_width
-					var w_ratio = 1.0
-					if (fixed_w<w/2) {
-						w_ratio = (w/2)/fixed_w
-					}
-					fixed_w = w_ratio*(fixed_w-controls_width)+controls_width
-					var remain_w = w-fixed_w-50
+    <div id="controlsPanel" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div >
+            <div id="divControls">Controls</div>
+        </div>
+    </div>
+    <div id="controlsPanelButton">
+        <button class="openbtn openbtnRotated" onclick="openNav()"><div><span>☰ Show Controls</span></div></button>  
+    </div>
 
-					var footer_height = 80/dpr
-					var info_height = 70/dpr
-					var eq_title_height = 20/dpr
-					var eqs_height = 230/dpr
-					var fixed_h = info_height+eq_title_height+eqs_height
-					var remain_h = h-fixed_h-footer_height
-					var h_except_info = h-info_height
-					var top_remain_h = (h-footer_height)/2 - fixed_h
-					var mid_remain_h = (h-footer_height)/5
-					var bot_remain_h = (h-footer_height)/2-mid_remain_h
-					//resizeBottomLeftGraphs = 1
-					//mid_remain_h = mid_remain_h*(1-resizeBottomLeftGraphs)
-					//bot_remain_h = bot_remain_h+mid_remain_h*resizeBottomLeftGraphs
-					
-					var propery_value = "{0}px {1}px {2}px {3}px {4}px".format([w_ratio*eq_left_width*squeeze_left, w_ratio*eq_mid_width*squeeze_left, w_ratio*eq_right_width*squeeze_left, controls_width, remain_w])
-					document.getElementById("main_container").style.setProperty("grid-template-columns",propery_value)
-
-					var propery_value = "{0}px {1}px {2}px {3}px {4}px {5}px".format([info_height, eq_title_height, eqs_height, top_remain_h, mid_remain_h, bot_remain_h])
-					document.getElementById("main_container").style.gridTemplateRows=propery_value;
+    <div id="divGLView">
+        <div id="glView"></div>
+    </div>
+    <div id="tabsPanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeTabs()">Close Panel</a>
+        <div id="divTabs"> 
+            <canvas id="plotChartX" class="graphCanvas"></canvas>
+        </div>
+    </div>
+    <div id="tabsPanelButton">
+        <button class="openbtn" onclick="openTabs()"><div><span>☰ Plots and Instructions</span></div></button>  
+    </div>
+</div>
 
 
-					if (document.getElementById("save_button_x")) {
-						document.getElementById("save_button_x").onclick = function() {
-							document.getElementById('plotChartX').toBlob(function(blob) {
-						        saveAs(blob, "plot.png");
-						    });
-						}
-					}
-					if (document.getElementById("save_button_transfer")) {
-						document.getElementById("save_button_transfer").onclick = function() {
-							document.getElementById('transferChart').toBlob(function(blob) {
-						        saveAs(blob, "plot.png");
-						    });
-						}
-					}
-
-					
-
-					
-					
-					Chart.defaults.global.defaultFontSize = 18/dpr;
-	    			runFilterViewer(document.getElementById("GLView"), 
-								document.getElementById("ControlsView"),
-								document.getElementById('transferChart'),
-								document.getElementById('plotChartX'),
-								document.getElementById('plotChartY'),
-								document.getElementById('plotChartZ'),
-								document.getElementById("eq_order"),
-								document.getElementById("equation"),
-								document.getElementById("equationParameters")
-								);
-	    		}
-			}
+  
 
 
-			
-		</script>
 
-	</body>
+<!--
+<div id="divControls" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeControls()">×</a>
+    controls
+  </div>
+<div id="divMain">
+    <button class="openbtn" onclick="openControls()">☰ Open Sidebar</button> 
+    <div id="item2">gl view</div>
+    <div id="item3">plots and info</div>
+  </div>
+
+<!--
+<div class="grid-container", id="main_container">
+    <div class="grid-item containerGL", id="GLView"></div>
+    <div class="grid-item">
+        <div class="containerControls", id="ControlsView"></div>
+    </div>
+
+    <button class="accordion">Motion Signal Plots</button>
+    <div class="grid-item panel containerPlot", id="containerPlotX">
+        Motion Filter Plot X <!--<button id="save_button_x">Save Png</button>-><br>
+        <canvas id="plotChartX" class="graphCanvas"></canvas>
+    </div>
+    
+    <div class="grid-item containerGraphY", id="cgrt">
+        Motion Filter Plot Y<br>
+        <canvas id="plotChartY" class="graphCanvas"></canvas>
+    </div>
+    <div class="grid-item containerGraphZ", id="cgrb">
+        Motion Filter Plot Z<br>
+        <canvas id="plotChartZ" class="graphCanvas"></canvas>
+    </div>
+</div>
+-->
+
+<script src="js/lib/stats.min.js"></script>
+<script src="js/lib/three.min.js"></script>
+<script src="js/lib/dat.gui.min.js"></script>
+<script src="js/lib/TrackballControls.js"></script>
+<script src="js/nuttyAux.js"></script>
+<script src="js/nuttyFilter.js"></script>
+<script src="js/vectorStateMachine.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/filterViewer.js"></script>
+<script src="js/lib/Chart.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+<script src="js/lib/FileSaver.min.js"></script>
+
+<script>
+
+    function hideWarning() {
+        document.getElementById("overlayWarning").style.display = "none";
+        makeHelpBalloons()
+    }
+
+    function resizeElementWidthRatio(elem_name, ratio) {
+        elem = document.getElementById(elem_name)
+        var get_style = elem.currentStyle || window.getComputedStyle(elem)
+        new_val = parseInt(get_style.getPropertyValue('width'))
+        new_val = "{0}px".format([new_val*ratio])
+        elem.style.setProperty('width', new_val)
+    }
+
+    function scalePage(ratio) {
+        return
+        document.body.style.setProperty("font-size", parseFloat(getComputedStyle(document.body).fontSize)*ratio + "px");
+        document.getElementById("ControlsView").style.transform = "scale("+ratio+")";
+    
+        
+        elementsList = ["info", "containerEquation", "eq_order", "containerEquationParamsTitle"]
+        for (e in elementsList) {
+            //document.getElementById(elementsList[e]).style.setProperty("font-size", parseFloat(getComputedStyle(document.getElementById(elementsList[e])).fontSize)*ratio + "px")
+            document.getElementById(elementsList[e]).style.setProperty("font-size", parseFloat(getComputedStyle(document.getElementById(elementsList[e])).fontSize)*ratio + "px");
+        } 
+        
+    }
+    var dpr = window.devicePixelRatio || 1;
+    var h = document.documentElement.clientHeight
+    if (h*dpr>1080) {
+        dpr=1
+    }
+
+    var forceRedraw = function(element){
+        var disp = element.style.display;
+        element.style.display = 'none';
+        var trick = element.offsetHeight;
+        element.style.display = disp;
+    };
+
+    function openNav() {
+        document.getElementById("controlsPanel").style.width = "250px";
+        document.getElementById("controlsPanelButton").style.width = "0";
+        document.getElementById("divMain").style.marginLeft = "250px";
+    }
+    
+    function closeNav() {
+        document.getElementById("controlsPanel").style.width = "0";
+        document.getElementById("controlsPanelButton").style.width = "80px";
+        document.getElementById("divMain").style.marginLeft= "0";
+    }
+
+    function openTabs() {
+        document.getElementById("tabsPanelButton").style.height = "0";
+        document.getElementById("divGLView").style.height=document.getElementById("divMain").clientHeight/2;
+        document.getElementById("tabsPanel").style.height="100%";
+        document.getElementById("divMain").style.gridTemplateRows="1fr 1fr 0";
+        forceRedraw(document.getElementById("divMain"));
+        console.log("H", document.getElementById("divMain").clientHeight)
+        viewer.onWindowResize();
+    }
+    
+    function closeTabs() {
+        document.getElementById("tabsPanelButton").style.height = "80px";
+        document.getElementById("divGLView").style.height="100%";
+        document.getElementById("tabsPanel").style.height="0%";
+        document.getElementById("divMain").style.gridTemplateRows="1fr 0fr 80px";
+        forceRedraw(document.getElementById("divMain"));
+
+        console.log("H", document.getElementById("divMain").clientHeight)
+        viewer.onWindowResize();
+    }
+
+    window.onload = function() {
+        
+        var w = document.documentElement.clientWidth
+        var h = document.documentElement.clientHeight
+        forceEvenIfTooBig = location.search.split('force=')[1]
+        forceEvenIfTooBig = !(forceEvenIfTooBig==undefined)
+        if( dpr*h < 800 && !forceEvenIfTooBig){ 
+             document.getElementById("overlay").style.display = "block";
+        } else{
+            
+            scalePage(1.0/dpr)
+            document.getElementById("overlay").style.display = "none";
+            if (dpr>1) {
+                document.getElementById("overlayWarning").style.display = "block";
+            }
+            else{
+                document.getElementById("overlayWarning").style.display = "none";
+                //makeHelpBalloons()
+            }
+
+            if (document.getElementById("save_button_x")) {
+                document.getElementById("save_button_x").onclick = function() {
+                    document.getElementById('plotChartX').toBlob(function(blob) {
+                        saveAs(blob, "plot.png");
+                    });
+                }
+            }
+            if (document.getElementById("save_button_transfer")) {
+                document.getElementById("save_button_transfer").onclick = function() {
+                    document.getElementById('transferChart').toBlob(function(blob) {
+                        saveAs(blob, "plot.png");
+                    });
+                }
+            }
+            
+            Chart.defaults.global.defaultFontSize = 18/dpr;
+            
+            runFilterViewer2(document.getElementById("glView"), 
+                        document.getElementById("divControls"),
+                        document.getElementById('plotChartX'),
+                        document.getElementById('plotChartX'),
+                        document.getElementById('plotChartX')
+                        );
+        }
+    }
+
+
+    
+</script>
+
+</body>
 </html>
