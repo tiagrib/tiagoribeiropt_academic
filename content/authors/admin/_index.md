@@ -13,9 +13,9 @@ role: Animation Scientist
 organizations:
 
 - name: Soul Machines
-  url: "www.soulmachines.com"
+  #url: ""
 - name: GAIPS @ INESC-ID
-  url: "www.gaips.inesc-id.pt"
+  #url: ""
 
 - name: Lisbon, Portugal
   url: ""
