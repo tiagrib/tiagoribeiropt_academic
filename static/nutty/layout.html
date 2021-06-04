@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<title>Nutty Motion Filter Viewer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="nmf_web.css">
+    </head>
+	<body>
+
+        
+<div id="overlayWarning", class="overlay">
+    <div class="overlay_text">
+        You seem to be using a High DPI display with a custom scale setting.<br>
+        The elements in this page will be resized to fit your screen but may, however seem off.<br>
+        If it deteriorates your experience with the simulator, please consider disabling the High DPI custom scale setting.<br>
+        <br>
+        <button onclick="hideWarning()">Click here to proceed.</button>
+    </div>
+</div> 
+<div id="overlay", class="overlay">
+    <div class="overlay_text">
+        Your screen seems too small to display the Nutty Motion Filter simulator.<br>
+        Please try it on a larger screen, such as a laptop or a desktop.<br><br>
+        The screen should be at least 1080p, although an even higher resolution is recommended.<br>
+        If you use a Mac, then maybe your DPI scaling is preventing this page from displaying currectly.<br>
+        <a href="motionfilter2.html?force=true">Click here to force the page to display.</a> <br>
+        <a href="http://tiagoribeiro.pt" target="_blank" rel="noopener"><small>tiagoribeiro.pt</small></a> 
+    </div>
+</div> 
+
+        <div id="divMain" class="gridmain">
+            <div id="controlsPanel" class="griditem">
+                <a href="javascript:void(0)" class="closebtn griditem" onclick="closeNav()">×</a>
+                <div >
+                    <div id="divControls">Controls</div>
+                </div>
+            </div>
+            <div id="controlsPanelButton" class="griditem">
+                <button class="openbtn openbtnRotated" onclick="openNav()"><div><span>☰ Show Controls</span></div></button>  
+            </div>
+        
+            <div id="divGLView" class="griditem">
+                <div id="glView"></div>
+            </div>
+            <div id="tabsPanel" class="griditem">
+                <div id="divTabPlotCloseButton">
+                    <a href="javascript:void(0)" class="closebtn griditem" onclick="closeTabs()">Close Panel ×</a>
+                </div>
+                
+                <div id="divTabPlotButtons" class="tab">
+                  <button class="tablinks" onclick="openTab(event, 'divTabPlotX')">Plot X</button>
+                  <button class="tablinks" onclick="openTab(event, 'divTabPlotY')">Plot Y</button>
+                  <button class="tablinks" onclick="openTab(event, 'divTabPlotZ')">Plot Z</button>
+                </div>
+                
+                <div id="divTabPlotX" class="tabcontent griditem"> 
+                    <canvas id="plotChartX" class="graphCanvas"></canvas>
+                </div>
+        
+                <div id="divTabPlotY" class="tabcontent griditem">
+                    <canvas id="plotChartY" class="graphCanvas"></canvas>
+                </div>
+                
+                <div id="divTabPlotZ" class="tabcontent griditem">
+                    <canvas id="plotChartZ" class="graphCanvas"></canvas>
+                </div>
+                
+            </div>
+            <div id="tabsPanelButton" class="griditem">
+                <button class="openbtn" onclick="openTabs()"><div><span>☰ Plots and Instructions</span></div></button>  
+            </div>
+        </div>
+
+
+        <script src="js/lib/stats.min.js"></script>
+        <script src="js/lib/three.min.js"></script>
+        <script src="js/lib/dat.gui.min.js"></script>
+        <script src="js/lib/TrackballControls.js"></script>
+        <script src="js/nuttyAux.js"></script>
+        <script src="js/nuttyFilter.js"></script>
+        <script src="js/vectorStateMachine.js"></script>
+        <script src="js/viewer.js"></script>
+        <script src="js/filterViewer.js"></script>
+        <script src="js/lib/Chart.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+        <script src="js/lib/FileSaver.min.js"></script>
+
+        <script>
+
+        function openNav() {
+            document.getElementById("divMain").style.gridTemplateColumns="250px 1fr";
+            document.getElementById("controlsPanel").style.width = "250px";
+            document.getElementById("controlsPanelButton").style.width = "0";
+            resize();
+        }
+        
+        function closeNav() {
+            document.getElementById("divMain").style.gridTemplateColumns="80px 1fr";
+            document.getElementById("controlsPanel").style.width = "0";
+            document.getElementById("controlsPanelButton").style.width = "80px";
+            resize();
+        }
+
+        function openTabs() {
+            document.getElementById("divMain").style.gridTemplateRows="60% 40%";
+            document.getElementById("tabsPanelButton").style.height = "0";
+            document.getElementById("tabsPanel").style.height="100%";
+            forceRedraw(document.getElementById("tabsPanel"));
+            document.getElementById("divGLView").style.height=document.getElementById("divMain").offsetHeight-document.getElementById("tabsPanel").offsetHeight;
+            forceRedraw(document.getElementById("divMain"));
+            document.getElementById("divTabPlotX").style.height = document.getElementById("tabsPanel").offsetHeight - document.getElementById("divTabPlotButtons").offsetHeight - document.getElementById("divTabPlotCloseButton").offsetHeight;
+            document.getElementById("divTabPlotY").style.height = document.getElementById("tabsPanel").offsetHeight - document.getElementById("divTabPlotButtons").offsetHeight - document.getElementById("divTabPlotCloseButton").offsetHeight;
+            document.getElementById("divTabPlotZ").style.height = document.getElementById("tabsPanel").offsetHeight - document.getElementById("divTabPlotButtons").offsetHeight - document.getElementById("divTabPlotCloseButton").offsetHeight;
+            viewer.onWindowResize();
+        }
+        
+        function closeTabs() {
+            document.getElementById("divMain").style.gridTemplateRows="1fr 80px";
+            document.getElementById("tabsPanelButton").style.height = "100%";
+            document.getElementById("tabsPanel").style.height="0";
+            forceRedraw(document.getElementById("tabsPanelButton"));
+            document.getElementById("divGLView").style.height=document.getElementById("divMain").offsetHeight-80;
+            forceRedraw(document.getElementById("divMain"));
+            viewer.onWindowResize();
+        }
+
+            
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            if (evt!=undefined ) {
+                evt.currentTarget.className += " active";
+            }
+            
+        }
+
+        var forceRedraw = function(element){
+            var disp = element.style.display;
+            element.style.display = 'none';
+            var trick = element.offsetHeight;
+            element.style.display = disp;
+        };
+
+        var w = document.documentElement.clientWidth
+    var h = document.documentElement.clientHeight
+    var dpr = window.devicePixelRatio || 1;
+    if (h*dpr>1080) {
+        dpr=1
+    }
+
+    window.onload = function() {
+        forceEvenIfTooBig = location.search.split('force=')[1]
+        forceEvenIfTooBig = !(forceEvenIfTooBig==undefined)
+        if( dpr*h < 800 && !forceEvenIfTooBig){ 
+             document.getElementById("overlay").style.display = "block";
+        } else{
+            
+            document.getElementById("overlay").style.display = "none";
+            if (dpr>1) {
+                document.getElementById("overlayWarning").style.display = "block";
+            }
+            else{
+                document.getElementById("overlayWarning").style.display = "none";
+                //makeHelpBalloons()
+            }
+
+            if (document.getElementById("save_button_x")) {
+                document.getElementById("save_button_x").onclick = function() {
+                    document.getElementById('plotChartX').toBlob(function(blob) {
+                        saveAs(blob, "plot.png");
+                    });
+                }
+            }
+            if (document.getElementById("save_button_transfer")) {
+                document.getElementById("save_button_transfer").onclick = function() {
+                    document.getElementById('transferChart').toBlob(function(blob) {
+                        saveAs(blob, "plot.png");
+                    });
+                }
+            }
+            
+            Chart.defaults.global.defaultFontSize = 18/dpr;
+            
+            runFilterViewer2(document.getElementById("glView"), 
+                        document.getElementById("divControls"),
+                        document.getElementById('plotChartX'),
+                        document.getElementById('plotChartY'),
+                        document.getElementById('plotChartZ')
+                        );
+
+            closeTabs();
+            openTab(undefined,"divTabPlotX");
+        }
+    }
+
+        </script>
+
+
+        </body>
+
+
+
+
+    </html>

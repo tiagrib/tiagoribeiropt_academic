@@ -65,28 +65,46 @@
     </div>
 </div> 
 
-<div id="divMain">
-
-    <div id="controlsPanel" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<div id="divMain" class="gridmain">
+    <div id="controlsPanel" class="griditem">
+        <a href="javascript:void(0)" class="closebtn griditem" onclick="closeNav()">×</a>
         <div >
             <div id="divControls">Controls</div>
         </div>
     </div>
-    <div id="controlsPanelButton">
+    <div id="controlsPanelButton" class="griditem">
         <button class="openbtn openbtnRotated" onclick="openNav()"><div><span>☰ Show Controls</span></div></button>  
     </div>
 
-    <div id="divGLView">
+    <div id="divGLView" class="griditem">
         <div id="glView"></div>
     </div>
-    <div id="tabsPanel">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeTabs()">Close Panel</a>
-        <div id="divTabs"> 
+    <div id="tabsPanel" class="griditem">
+        <a href="javascript:void(0)" class="closebtn griditem" onclick="closeTabs()">Close Panel</a>
+
+        <p>Click on the buttons inside the tabbed menu:</p>
+
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'divTabPlotX')">Plot X</button>
+          <button class="tablinks" onclick="openTab(event, 'divTabPlotY')">Plot Y</button>
+          <button class="tablinks" onclick="openTab(event, 'divTabPlotZ')">Plot Z</button>
+        </div>
+        
+        <div id="divTabPlotX" class="tabcontent griditem"> 
+            <h3>Plot X</h3>
             <canvas id="plotChartX" class="graphCanvas"></canvas>
         </div>
+
+        <div id="divTabPlotY" class="tabcontent griditem">
+          <h3>Plot Y</h3>
+        </div>
+        
+        <div id="divTabPlotZ" class="tabcontent griditem">
+          <h3>Plot Z</h3>
+        </div>
+        
     </div>
-    <div id="tabsPanelButton">
+    <div id="tabsPanelButton" class="griditem">
         <button class="openbtn" onclick="openTabs()"><div><span>☰ Plots and Instructions</span></div></button>  
     </div>
 </div>
@@ -172,11 +190,7 @@
         } 
         
     }
-    var dpr = window.devicePixelRatio || 1;
-    var h = document.documentElement.clientHeight
-    if (h*dpr>1080) {
-        dpr=1
-    }
+    
 
     var forceRedraw = function(element){
         var disp = element.style.display;
@@ -186,42 +200,52 @@
     };
 
     function openNav() {
-        document.getElementById("controlsPanel").style.width = "250px";
-        document.getElementById("controlsPanelButton").style.width = "0";
-        document.getElementById("divMain").style.marginLeft = "250px";
-    }
-    
-    function closeNav() {
-        document.getElementById("controlsPanel").style.width = "0";
-        document.getElementById("controlsPanelButton").style.width = "80px";
-        document.getElementById("divMain").style.marginLeft= "0";
-    }
+            document.getElementById("divMain").style.gridTemplateColumns="250px 1fr";
+            document.getElementById("controlsPanel").style.width = "250px";
+            document.getElementById("controlsPanelButton").style.width = "0";
+        }
+        
+        function closeNav() {
+            document.getElementById("divMain").style.gridTemplateColumns="80px 1fr";
+            document.getElementById("controlsPanel").style.width = "0";
+            document.getElementById("controlsPanelButton").style.width = "80px";
+        }
 
-    function openTabs() {
-        document.getElementById("tabsPanelButton").style.height = "0";
-        document.getElementById("divGLView").style.height=document.getElementById("divMain").clientHeight/2;
-        document.getElementById("tabsPanel").style.height="100%";
-        document.getElementById("divMain").style.gridTemplateRows="1fr 1fr 0";
-        forceRedraw(document.getElementById("divMain"));
-        console.log("H", document.getElementById("divMain").clientHeight)
-        viewer.onWindowResize();
-    }
-    
-    function closeTabs() {
-        document.getElementById("tabsPanelButton").style.height = "80px";
-        document.getElementById("divGLView").style.height="100%";
-        document.getElementById("tabsPanel").style.height="0%";
-        document.getElementById("divMain").style.gridTemplateRows="1fr 0fr 80px";
-        forceRedraw(document.getElementById("divMain"));
+        function openTabs() {
+            document.getElementById("divMain").style.gridTemplateRows="60% 40%";
+            document.getElementById("tabsPanelButton").style.height = "0";
+            document.getElementById("tabsPanel").style.height="40%";
+        }
+        
+        function closeTabs() {
+            document.getElementById("divMain").style.gridTemplateRows="1fr 80px";
+            document.getElementById("tabsPanelButton").style.height = "80px";
+            document.getElementById("tabsPanel").style.height="0";
+        }
 
-        console.log("H", document.getElementById("divMain").clientHeight)
-        viewer.onWindowResize();
+        
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+    var w = document.documentElement.clientWidth
+    var h = document.documentElement.clientHeight
+    var dpr = window.devicePixelRatio || 1;
+    if (h*dpr>1080) {
+        dpr=1
     }
 
     window.onload = function() {
-        
-        var w = document.documentElement.clientWidth
-        var h = document.documentElement.clientHeight
         forceEvenIfTooBig = location.search.split('force=')[1]
         forceEvenIfTooBig = !(forceEvenIfTooBig==undefined)
         if( dpr*h < 800 && !forceEvenIfTooBig){ 
@@ -254,7 +278,7 @@
             }
             
             Chart.defaults.global.defaultFontSize = 18/dpr;
-            
+            closeTabs();
             runFilterViewer2(document.getElementById("glView"), 
                         document.getElementById("divControls"),
                         document.getElementById('plotChartX'),
