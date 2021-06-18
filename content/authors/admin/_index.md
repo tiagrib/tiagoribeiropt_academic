@@ -7,7 +7,7 @@ title: Tiago "Dr. Nutty" Ribeiro
 superuser: true
 
 # Role/position
-role: Animation Scientist
+role: AI Animation Scientist & Senior Research Engineer
 
 # Organizations/Affiliations
 organizations:
