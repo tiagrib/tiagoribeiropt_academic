@@ -1,6 +1,6 @@
 ---
 title: Knowledgebase
-layout: docs  # Do not modify.
+layout: book  # Do not modify.
 
 # Optional header image (relative to `static/media/` folder).
 header:

@@ -45,7 +45,7 @@
 	<body>
 
 
-<div id="overlayWarning", class="overlay">
+<!--<div id="overlayWarning", class="overlay">
     <div class="overlay_text">
         You seem to be using a High DPI display with a custom scale setting.<br>
         The elements in this page will be resized to fit your screen but may, however seem off.<br>
@@ -63,7 +63,7 @@
         <a href="motionfilter2.html?force=true">Click here to force the page to display.</a> <br>
         <a href="http://tiagoribeiro.pt" target="_blank" rel="noopener"><small>tiagoribeiro.pt</small></a> 
     </div>
-</div> 
+</div> -->
 
 <div id="divMain" class="gridmain">
     <div id="controlsPanel" class="griditem">
@@ -246,21 +246,21 @@
     }
 
     window.onload = function() {
-        forceEvenIfTooBig = location.search.split('force=')[1]
+        /*forceEvenIfTooBig = location.search.split('force=')[1]
         forceEvenIfTooBig = !(forceEvenIfTooBig==undefined)
         if( dpr*h < 800 && !forceEvenIfTooBig){ 
              document.getElementById("overlay").style.display = "block";
-        } else{
+        } else{*/
             
             scalePage(1.0/dpr)
-            document.getElementById("overlay").style.display = "none";
+            /*document.getElementById("overlay").style.display = "none";
             if (dpr>1) {
                 document.getElementById("overlayWarning").style.display = "block";
             }
             else{
                 document.getElementById("overlayWarning").style.display = "none";
                 //makeHelpBalloons()
-            }
+            }*/
 
             if (document.getElementById("save_button_x")) {
                 document.getElementById("save_button_x").onclick = function() {
@@ -285,7 +285,7 @@
                         document.getElementById('plotChartX'),
                         document.getElementById('plotChartX')
                         );
-        }
+        //}
     }
 
 
