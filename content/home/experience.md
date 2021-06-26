@@ -27,7 +27,7 @@ css_class = ""
 [[experience]]
   gradient_start = "#4bb4e3"
   gradient_end = "#2b94c3"
-  title = "**Animation Scientist**"
+  title = "**AI Animation Scientist & Senior Research Engineer**"
   company = "**Soul Machines**"
   company_url = "https://www.soulmachines.com/"
   location = "Auckland, New Zealand"
