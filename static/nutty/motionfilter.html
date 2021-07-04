@@ -80,27 +80,23 @@
         <div id="glView"></div>
     </div>
     <div id="tabsPanel" class="griditem">
-        <a href="javascript:void(0)" class="closebtn griditem" onclick="closeTabs()">Close Panel</a>
-
-        <p>Click on the buttons inside the tabbed menu:</p>
-
-        <div class="tab">
+        <a id="tabs_close_bar" href="javascript:void(0)" class="closebtn griditem" onclick="closeTabs()">Close Panel</a>
+        <div id="tabs_bar" class="tab">
           <button class="tablinks" onclick="openTab(event, 'divTabPlotX')">Plot X</button>
           <button class="tablinks" onclick="openTab(event, 'divTabPlotY')">Plot Y</button>
           <button class="tablinks" onclick="openTab(event, 'divTabPlotZ')">Plot Z</button>
         </div>
         
         <div id="divTabPlotX" class="tabcontent griditem"> 
-            <h3>Plot X</h3>
             <canvas id="plotChartX" class="graphCanvas"></canvas>
         </div>
 
         <div id="divTabPlotY" class="tabcontent griditem">
-          <h3>Plot Y</h3>
+            <canvas id="plotChartY" class="graphCanvas"></canvas>
         </div>
         
         <div id="divTabPlotZ" class="tabcontent griditem">
-          <h3>Plot Z</h3>
+            <canvas id="plotChartZ" class="graphCanvas"></canvas>
         </div>
         
     </div>
@@ -214,7 +210,14 @@
         function openTabs() {
             document.getElementById("divMain").style.gridTemplateRows="60% 40%";
             document.getElementById("tabsPanelButton").style.height = "0";
-            document.getElementById("tabsPanel").style.height="40%";
+            document.getElementById("tabsPanel").style.height="100%";
+
+            /*forceRedraw(document.getElementById("tabsPanel"))
+            forceRedraw(document.getElementById("tabs_close_bar"))
+            forceRedraw(document.getElementById("tabs_bar"))*/
+            
+            //console.log(document.getElementById("tabsPanel").clientHeight-)
+            
         }
         
         function closeTabs() {
@@ -229,12 +232,14 @@
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
+                tabcontent[i].style.height = "0";
             }
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
             document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).style.height=document.getElementById("tabsPanel").clientHeight-document.getElementById("tabs_close_bar").clientHeight-document.getElementById("tabs_bar").clientHeight+ "px";
             evt.currentTarget.className += " active";
         }
 
@@ -282,8 +287,8 @@
             runFilterViewer2(document.getElementById("glView"), 
                         document.getElementById("divControls"),
                         document.getElementById('plotChartX'),
-                        document.getElementById('plotChartX'),
-                        document.getElementById('plotChartX')
+                        document.getElementById('plotChartY'),
+                        document.getElementById('plotChartZ')
                         );
         //}
     }

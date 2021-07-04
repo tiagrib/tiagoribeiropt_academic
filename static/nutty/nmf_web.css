@@ -27,7 +27,7 @@ body {
 }
 
 .griditem {
-    border: 1px solid #000;
+    border: 0px solid #000;
 }
 
   
@@ -51,7 +51,7 @@ body {
 .graphCanvas {
     /*border: 1px dotted blue;*/
     background-color: #EEE;
-    height:100%;
+    /*height:100%;*/
 }
 
 #tabsPanelButton {
@@ -76,7 +76,7 @@ body {
     height: 0%;
     width: 100%;
     text-align: "left";
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     transition: 0.5s;
 }
 
@@ -201,7 +201,7 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 1px 16px;
     transition: 0.3s;
     font-size: 17px;
 }
@@ -222,7 +222,15 @@ body {
     border: none;
     margin:0;
     padding:0;
+    /*height:100%;*/
 }  
+
+.tabcontent_default {
+    border: none;
+    margin:0;
+    padding:0;
+    /*height:100%;*/
+} 
 
 
 .overlay {
