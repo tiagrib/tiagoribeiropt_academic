@@ -10,7 +10,7 @@ categories: []
 date: 2021-01-30T19:34:27Z
 lastmod: 2021-01-30T19:34:27Z
 featured: true
-draft: false
+draft: true
 toc: true
 
 # Featured image
