@@ -1,2 +1,2 @@
-hugo server --disableFastRender  --i18n-warnings
+hugo server --disableFastRender  --i18n-warnings --debug
 pause

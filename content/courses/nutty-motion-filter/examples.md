@@ -2,7 +2,7 @@
 title: "Nutty Motion Filter: Examples"
 linktitle: Examples
 toc: true
-type: docs
+type: book
 date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
@@ -13,6 +13,7 @@ menu:
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
 weight: 2
 ---
+
 
 Here are some more tips for getting started with Academic:
 

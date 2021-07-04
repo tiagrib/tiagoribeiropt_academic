@@ -5,7 +5,7 @@
 {{ $show_breadcrumb := index $breadcrumb_page_types .Type | default false }}
 
 <div class="container-fluid docs">
-  <div class="row flex-xl-nowrap">
+  <div class="row flex-xl-nowrap" style="height: 100%">
     <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
       {{ partial "book_sidebar" . }}
     </div>
@@ -25,22 +25,20 @@
     </div>
     {{ end }}
 
-    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content gldemo " role="main" style="height: 100%">
 
-      <article class="article">
+      <article class="article" style="height: 100%">
 
-        <div class="docs-article-container">
+        <div class="docs-article-container gldemo" style="height: 100%">
           {{ if $show_breadcrumb }}
             {{ partial "breadcrumb" $current_page }}
           {{ end }}
 
           <h1>{{ .Title }}</h1>
-          blablabla
-          <div class="article-style" class"gldemo">
-            
+
+          <div class="article-style stretch-height" style="height: 65vh">
             {{ .Content }}
           </div>
-
           {{ partial "tags.html" . }}
 
           {{/* Show next/previous pages by default. */}}
@@ -52,7 +50,7 @@
         </div>
 
         <div class="body-footer">
-          <p>{{ i18n "last_updated" }} {{ $.Lastmod.Format site.Params.date_format }}</p>
+          <!--<p>{{ i18n "last_updated" }} {{ $.Lastmod.Format site.Params.date_format }}</p>-->
 
           {{ partial "page_edit" . }}
 

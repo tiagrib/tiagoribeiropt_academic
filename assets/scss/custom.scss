@@ -53,3 +53,36 @@ p {
 blockquote {
     color: #000000 !important;
 }
+
+.gldemo {
+    width: 100%;
+    max-width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 90%;
+    
+}
+
+.stretch-height {
+    height: 100%;
+}
+
+.site-footer {
+    margin-top: 8px;
+}
+
+.body-footer {
+    margin-top: 8px;
+}
+
+.docs .body-footer {
+    margin-top: 0px;
+}
+.post-nav {
+    margin-top: 0px;
+}
+
+.post-nav-item {
+    display:inline;
+float:left;
+}
