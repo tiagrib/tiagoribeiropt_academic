@@ -27,7 +27,7 @@ css_class = ""
 [[experience]]
   gradient_start = "#4bb4e3"
   gradient_end = "#2b94c3"
-  title = "**AI Animation Scientist & Senior Research Engineer**"
+  title = "**AI Animation Scientist & Senior Researcher II**"
   company = "**Soul Machines**"
   company_url = "https://www.soulmachines.com/"
   location = "Auckland, New Zealand"
@@ -38,11 +38,11 @@ css_class = ""
 
   Responsibilities include:
   
-  * Designing and developing the skeletal animation system
+  * Designing and developing the skeletal animation system for autonomous digital humans
   * Working with artists to ensure the animated motion looks natural and is fail-safe
   * Inventing mechanisms that enable autonomous animation of digital characters
-  * Establishing directives for behaviour design and selection
-  * Providing guidelines for expressive behaviour of emotion and personality
+  * Establishing directives for behaviour design and selection by AI
+  * Providing guidelines for expressive behaviour of emotion and personality by and AI
   """
 
 
