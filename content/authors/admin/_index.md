@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Tiago "Dr. Nutty" Ribeiro
+title: Tiago Ribeiro
 
 
 # Is this the primary user of the site?
