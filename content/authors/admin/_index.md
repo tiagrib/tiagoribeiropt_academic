@@ -7,7 +7,7 @@ title: Tiago Ribeiro
 superuser: true
 
 # Role/position
-role: AI Animation Scientist & Senior Research Engineer
+role: AI Animation Scientist & Senior Researcher II
 
 # Organizations/Affiliations
 organizations:
