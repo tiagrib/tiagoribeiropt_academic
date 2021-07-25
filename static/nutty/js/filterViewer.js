@@ -322,20 +322,22 @@ var FilterViewerSettings = function(controller) {
 	this.filterSettings = {
 		Order : FilterOrderEnum.First,
 		TanhLimiter : true,
-		Stabilizer : true
-	}
-	this.filterLimits = {
+		Stabilizer : true,
 		MaxV : 100,
 		MaxA : 500,
-		MaxJ : 50000
-	}
-	this.filterTuning = {
+		MaxJ : 50000,
 		CoefficientA : 0.2,
 		CoefficientB : 0.06,
 		CoefficientC : 1.0,
 		//CoefficientD : -0.2,
 		AutoUpdate : false
 	}
+	/*this.filterLimits = {
+		
+	}
+	this.filterTuning = {
+		
+	}*/
 	this.show = {
 		SetPoint : true,
 		Position : true,
@@ -367,7 +369,7 @@ function motionChangedPreview(value)
 }
 function filterChangedPreview(value) 
 {
-	updateGraphs(value, 1000, settings.filterTuning.AutoUpdate);
+	updateGraphs(value, 1000);
 }
 
 function motionChanged(value) 
@@ -395,8 +397,8 @@ function filterChanged(value) {
 }
 
 function configureFilter(filter) {
-	filter.SetLimitsInRadians(settings.filterLimits.MaxV, settings.filterLimits.MaxA, settings.filterLimits.MaxA, settings.filterLimits.MaxJ)
-	filter.SetSmoothing(settings.filterTuning.CoefficientA, settings.filterTuning.CoefficientB, settings.filterTuning.CoefficientC, 0)
+	filter.SetLimitsInRadians(settings.filterSettings.MaxV, settings.filterSettings.MaxA, settings.filterSettings.MaxA, settings.filterSettings.MaxJ)
+	filter.SetSmoothing(settings.filterSettings.CoefficientA, settings.filterSettings.CoefficientB, settings.filterSettings.CoefficientC, 0)
 	filter.useTanhLimiter = settings.filterSettings.TanhLimiter
 	filter.useStabilizer = settings.filterSettings.Stabilizer
 	return filter
@@ -424,9 +426,9 @@ function motionShowChanged(value) {
 		
 		plotCharts[axis].update(0);
 	}
-	maxJctrl = getController(gui, settings.filterLimits, gui_folder_text_limits, "MaxJ").domElement
-	maxActrl = getController(gui, settings.filterLimits, gui_folder_text_limits, "MaxA").domElement
-	maxVctrl = getController(gui, settings.filterLimits, gui_folder_text_limits, "MaxV").domElement
+	maxJctrl = getController(gui, settings.filterSettings, gui_folder_text_settings, "MaxJ").domElement
+	maxActrl = getController(gui, settings.filterSettings, gui_folder_text_settings, "MaxA").domElement
+	maxVctrl = getController(gui, settings.filterSettings, gui_folder_text_settings, "MaxV").domElement
 	showJctrl = getController(gui, settings.show, gui_folder_text_visibility, "Jerk")
 	showVctrl = getController(gui, settings.show, gui_folder_text_visibility, "Velocity")
 	showActrl = getController(gui, settings.show, gui_folder_text_visibility, "Acceleration")
@@ -512,7 +514,7 @@ function updateMotionGraph(value, resolution=1000)
 		}
 		plotCharts[axis].config.options.scales.xAxes[0].ticks.max = settings.trajectory.Interval;
 		plotCharts[axis].config.options.scales.xAxes[0].ticks.min = 0;
-		limits = [0, settings.filterLimits.MaxV, settings.filterLimits.MaxA, settings.filterLimits.MaxJ]
+		limits = [0, settings.filterSettings.MaxV, settings.filterSettings.MaxA, settings.filterSettings.MaxJ]
 		for (var d=0;d<orderCount-1;d++) 
 		{
 			if (d>0) {
@@ -614,8 +616,8 @@ function getPresetJSON() {
 
 gui_folder_text_trajectory = 'Trajectory'
 gui_folder_text_settings = 'Filter Settings'
-gui_folder_text_tuning = 'Character Control (transfer function)'
-gui_folder_text_limits = 'Kinematic Limits'
+//gui_folder_text_tuning = 'Character Control (transfer function)'
+//gui_folder_text_limits = 'Kinematic Limits'
 gui_folder_text_visibility = 'Plot Visibility'
 gui_folder_text_controls = 'Object/3D Controls'
 
@@ -624,17 +626,17 @@ gui_folder_dom = {}
 function makeGUI(controller, controlsContainer) {
 	settings = new FilterViewerSettings(controller);
 	gui.remember(settings.filterSettings);
-	gui.remember(settings.filterLimits);
-	gui.remember(settings.filterTuning);
+	/*gui.remember(settings.filterLimits);
+	gui.remember(settings.filterTuning);*/
 	var f_traj = gui.addFolder(gui_folder_text_trajectory);
 	f_traj.open()
 	gui_folder_dom[gui_folder_text_trajectory] = f_traj
 	var f_filterSettings = gui.addFolder(gui_folder_text_settings);
 	f_filterSettings.open()
-	var f_filterTuning = gui.addFolder(gui_folder_text_tuning);
+	/*var f_filterTuning = gui.addFolder(gui_folder_text_tuning);
 	f_filterTuning.open()
 	var f_limits = gui.addFolder(gui_folder_text_limits);
-	f_limits.open()
+	f_limits.open()*/
 	var f_vis = gui.addFolder(gui_folder_text_visibility);
 	f_vis.open()
 	var f_controls = gui.addFolder(gui_folder_text_controls);
@@ -646,18 +648,18 @@ function makeGUI(controller, controlsContainer) {
 	f_traj.add(settings.trajectory, 'NewRandom');
 
 	ctrlFilterOrder = f_filterSettings.add(settings.filterSettings, 'Order', {'First':FilterOrderEnum.First, 'Second':FilterOrderEnum.Second, 'Third':FilterOrderEnum.Third});
-	stabilizerChanged = f_filterSettings.add(settings.filterSettings, 'Stabilizer').name("Character Control");
-	tanhLimiterChanged = f_filterSettings.add(settings.filterSettings, 'TanhLimiter').name("Use Tanh Limiter")
+	//stabilizerChanged = f_filterSettings.add(settings.filterSettings, 'Stabilizer').name("Character Control");
+	//tanhLimiterChanged = f_filterSettings.add(settings.filterSettings, 'TanhLimiter').name("Use Tanh Limiter")
 
-	var ctrlV = f_limits.add(settings.filterLimits, 'MaxV', 1, 100).name('Max Velocity');
-	var ctrlA = f_limits.add(settings.filterLimits, 'MaxA', 1, 1000).name('Max Acceleration');
-	var ctrlJ = f_limits.add(settings.filterLimits, 'MaxJ', 1, 100000).name('Max Jerk');
-	var ctrlCA = f_filterTuning.add(settings.filterTuning, 'CoefficientA', 0.0, 1.0).name('Smooth');
-	var ctrlCB = f_filterTuning.add(settings.filterTuning, 'CoefficientB', 0.00001, 0.9999999).name('Responsive');
+	var ctrlV = f_filterSettings.add(settings.filterSettings, 'MaxV', 1, 100).name('Max Velocity');
+	var ctrlA = f_filterSettings.add(settings.filterSettings, 'MaxA', 1, 1000).name('Max Acceleration');
+	var ctrlJ = f_filterSettings.add(settings.filterSettings, 'MaxJ', 1, 100000).name('Max Jerk');
+	var ctrlCA = f_filterSettings.add(settings.filterSettings, 'CoefficientA', 0.0, 1.0).name('Smooth');
+	var ctrlCB = f_filterSettings.add(settings.filterSettings, 'CoefficientB', 0.00001, 0.9999999).name('Responsive');
 	//var ctrlCC = f_filterTuning.add(settings.filterTuning, 'CoefficientC', 0.0, 100).name('Energy Exponent');
 	//var ctrlCD = f_filterTuning.add(settings.filterTuning, 'CoefficientD', -1.0, 1.0).name('Release Smooth');
 	
-	f_filterTuning.add(settings.filterTuning, 'AutoUpdate').name('Auto Update Graphs');
+	//f_filterSettings.add(settings.filterSettings, 'AutoUpdate').name('Auto Update Graphs');
 	
 	
 	showSP = f_vis.add(settings.show, 'SetPoint').name("Show Set-Point")
@@ -669,8 +671,8 @@ function makeGUI(controller, controlsContainer) {
 	f_controls.add(settings.controls, 'ResetObject').name("Reset Motion");
 	f_controls.add(settings.controls, 'ResetObjectOnFilterSettingsChange').name('Reset on change');
 	
-	stabilizerChanged.onFinishChange(filterChangedRewriteEquations);
-	tanhLimiterChanged.onFinishChange(filterChangedRewriteEquations);
+	//stabilizerChanged.onFinishChange(filterChangedRewriteEquations);
+	//tanhLimiterChanged.onFinishChange(filterChangedRewriteEquations);
 
 	showSP.onChange(motionShowChanged);
 	showP.onChange(motionShowChanged);
@@ -708,8 +710,8 @@ function makeGUI(controller, controlsContainer) {
 function filterChangedRewriteEquations(value) {
 	filterChanged()
 	updateFilterEquations()
-	elem_a = getController(gui, settings.filterTuning, gui_folder_text_tuning, "CoefficientA").domElement
-	elem_b = getController(gui, settings.filterTuning, gui_folder_text_tuning, "CoefficientB").domElement
+	elem_a = getController(gui, settings.filterSettings, gui_folder_text_settings, "CoefficientA").domElement
+	elem_b = getController(gui, settings.filterSettings, gui_folder_text_settings, "CoefficientB").domElement
 	//elem_c = getController(gui, settings.filterTuning, gui_folder_text_tuning, "CoefficientC").domElement
 	//elem_d = getController(gui, settings.filterTuning, gui_folder_text_tuning, "CoefficientD").domElement
 	if (settings.filterSettings.Stabilizer) {
