@@ -15,7 +15,7 @@
 {{ end }}
 
 {{/* Generate homepage. */}}
-{{ printf "%#v" $.Type }}
+{{/* printf "%#v" .Type */}}
 {{ if eq .Type "bookdemo" }}
   {{ partial "bookdemo_layout.html" . }}
 {{ else if eq .Type "docsdemo" }}
