@@ -38,7 +38,7 @@ menu:
   <source src="/courses/nutty-motion-filter/nmf_demo1.mp4" type="video/mp4">
 </video>
 
-[TRY THE WEB DEMO](http://tiagoribeiro.pt/nutty/motionfilter.html) 
+[TRY THE WEB DEMO](http://www.tiagoribeiro.pt/nutty/motionfilter.html) 
 
 When working with animation - be it **virtual or robotic**, *character*- or *object*-wise, we commonly run into the need for **interpolation** techniques to stitch together different pieces of motion or poses in order to form a **smooth and continuous** behaviour.
 Choosing your motion interpolation techniques depends on the definition of your problem, as in:
