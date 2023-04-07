@@ -31,8 +31,30 @@ css_class = ""
   company = "**Soul Machines**"
   company_url = "https://www.soulmachines.com/"
   location = "Auckland, New Zealand"
-  date_start = "2020-01-20"
+  date_start = "2023-04-01"
   date_end = ""
+  description = """**AGI company that provides Digital People for a variety of markets**
+
+
+  Responsibilities include:
+  
+  * Lead the technical and architectural development of the autonomous animation system.
+  * Participate in the product strategy with feedback from/to technology development.
+  * Promote, support and lead the transfer of research into product.
+  * Invent mechanisms that enable autonomous animation of digital characters.
+  * Work with artists to ensure the animated motion looks natural and is fail-safe.
+  * Establish directives for autonomous behaviour design and selection.
+  * Provide guidelines for expressive behaviour of emotion and personality.
+  * Define instruments to measure animate and interactive qualities of autonomous digital characters.
+  """
+
+[[experience]]
+  title = "AI Animation Scientist & Senior Researcher II"
+  company = "Soul Machines"
+  company_url = "https://www.soulmachines.com/"
+  location = "Auckland, New Zealand"
+  date_start = "2020-01-20"
+  date_end = "2023-03-31"
   description = """**AGI company that provides Digital People for a variety of markets**
 
 
@@ -44,7 +66,6 @@ css_class = ""
   * Establishing directives for behaviour design and selection by AI
   * Providing guidelines for expressive behaviour of emotion and personality by and AI
   """
-
 
 
 [[experience]]
