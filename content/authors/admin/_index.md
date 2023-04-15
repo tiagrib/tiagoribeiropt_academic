@@ -7,14 +7,14 @@ title: Tiago Ribeiro
 superuser: true
 
 # Role/position
-role: AI Animation Scientist & Senior Researcher II
+role: Principal Research Engineer, Autonomous Animation
 
 # Organizations/Affiliations
 organizations:
 
 - name: Soul Machines
   #url: ""
-- name: GAIPS @ INESC-ID
+- name: formerly GAIPS @ INESC-ID
   #url: ""
 
 - name: Lisbon, Portugal
