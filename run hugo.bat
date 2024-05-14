@@ -1,2 +1,2 @@
-hugo server --disableFastRender  --i18n-warnings --debug --renderToDisk --cleanDestinationDir --verbose --gc
+hugo server --disableFastRender  --printI18nWarnings --debug --cleanDestinationDir --verbose --gc
 pause
