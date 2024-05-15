@@ -1,0 +1,21 @@
+name: Tiagal
+light:
+  primary: '#551515'
+  link: '#8C342A'
+  link_hover: 'rgb(54, 54, 54)'
+  menu_primary: '#A8B38F'
+  menu_text: '#384023'
+  menu_text_active: '#FFFFFF'
+  menu_title: '#384023'
+  home_section_odd: '#ebf2f2'
+  home_section_even: '#dfe5e5'
+dark:
+  primary: '#551515'
+  link: '#8C342A'
+  link_hover: 'rgb(54, 54, 54)'
+  menu_primary: '#A8B38F'
+  menu_text: '#384023'
+  menu_text_active: '#FFFFFF'
+  menu_title: '#384023'
+  home_section_odd: '#ebf2f2'
+  home_section_even: '#dfe5e5'
