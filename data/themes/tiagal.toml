@@ -1,24 +1,38 @@
 # Theme metadata
 name = "Tiagal"
 
-# Is theme light or dark?
-light = true
+[light]
+  # Primary
+  primary = "#8C342A"
 
-# Primary
-primary = "#8C342A"
-#primary = "#F2DE44"
+  # Links
+  link = "#3273dc"
+  link_hover = "rgb(54, 54, 54)"
 
+  # Menu
+  menu_primary = "#A8B38F"
+  menu_text = "#384023"
+  menu_text_active = "#FFFFFF"
+  menu_title = "#384023"
 
-# Menu
-# background
-menu_primary = "#A8B38F"
+  # Home sections
+  home_section_odd = "#E6EBF2"
+  home_section_even = "#E2E4F3"
 
-menu_text = "#384023"
-menu_text_active = "#FFFFFF"
+[dark]
+  # Primary
+  primary = "#8C342A"
 
-# title text color
-menu_title = "#384023"
+  # Links
+  link = "#3273dc"
+  link_hover = "rgb(54, 54, 54)"
 
-# Home sections
-home_section_odd = "#E6EBF2"
-home_section_even = "#E2E4F3"
+  # Menu
+  menu_primary = "#A8B38F"
+  menu_text = "#384023"
+  menu_text_active = "#FFFFFF"
+  menu_title = "#384023"
+
+  # Home sections
+  home_section_odd = "#E6EBF2"
+  home_section_even = "#E2E4F3"
