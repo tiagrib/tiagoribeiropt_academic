@@ -1,6 +1,7 @@
 ---
 title: Adelino
-summary: '2017-<br>my Craft Robot'
+subtitle: A craft robot I built and design to support my PhD thesis.
+summary: '2017<br>A craft robot I built and design to support my PhD thesis.'
 tags:
 - Robots
 date: "2021-01-23T00:00:00Z"

@@ -1,7 +1,7 @@
 ---
 title: Nutty Tracks
 subtitle: www.nuttytracks.com
-summary: '2013-<br>Programmable symbolic animation system for robot animation.'
+summary: '2013<br>Programmable symbolic animation system for robot animation.'
 tags:
 - Software
 date: '2020-01-23T00:00:00Z'
