@@ -7,7 +7,6 @@
 
 appearance:
   theme_day: tiagal
-  theme_night: tiagal
 
 # SEO
 
@@ -35,7 +34,7 @@ header:
     align: l
     show_logo: true
     show_language: false
-    show_day_night: true
+    show_day_night: false
     show_search: true
     highlight_active_link: true
 
