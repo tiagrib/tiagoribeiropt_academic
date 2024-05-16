@@ -223,7 +223,7 @@ Within those fields, I have accumulated **over 13 years of expertise** in **anim
 My creatures aren’t lifelike solely by **design** or by **movement**.
 That's why I always start any presentations by saying:
 
-> Animation isn't just about motion - it is about expressing thought, identity, emotion and intention.
+_Animation isn't just about motion - it is about expressing thought, identity, emotion and intention._
 
 I strive to understand and create the basic underlying mechanisms that allow an artificial intelligence to portray its **existence** through an **artificial embodiment**, be it virtual or robotic, abstract or human-like.
 In essence, I’ve been architecting and engineering **Autonomous Characters**.
