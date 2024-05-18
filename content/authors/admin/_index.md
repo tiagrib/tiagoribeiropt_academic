@@ -136,7 +136,7 @@ skills:
         icon_pack: fas
       - name: Machine Learning
         description: ''
-        percent: 60
+        percent: 75
         icon: brain
         icon_pack: fas
       - name: Human-Robot Interaction
