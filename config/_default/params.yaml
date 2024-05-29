@@ -10,12 +10,13 @@ appearance:
 
 # SEO
 
+
 marketing:
   seo:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'A highly-customizable Hugo academic resume theme powered by Hugo Blox Builder.'
+    description: 'AI consulting and animation of autonomous virtual and robotic characters.'
     twitter: 'GetResearchDev'
   analytics:
     google_analytics: ''
