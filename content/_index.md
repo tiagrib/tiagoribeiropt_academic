@@ -33,7 +33,47 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - title: '**Consultor & Advisor in Artificial Intelligence**'
+        - title: '**Chief Technology Officer (CTO)**'
+          gradient_start: '#4bb4e3'
+          gradient_end: '#2b94c3'
+          company: 'DHTA'
+          company_url: 'https://dht.agency/'
+          location: 'Turin, Italy (Remote)'
+          date_start: '2024-10-01'
+          date_end: ''
+          description: |2-
+            * Lead the research and development of innovative technologies related to the collection, processing, and secure handling of biometric data (including facial, voice, and behavioral characteristics) for the creation of digital replicas of public figures (our Talents). This is done with a rigorous focus on safeguarding personal identity rights and preventing unauthorized use.
+            * Spearhead advanced R&D into the development of autonomous virtual humans, Gen-AI digital replicas, and Gen-AI autonomous agents, with a forward-looking approach towards future applications in VR/AR, Web4, and beyond, all while ensuring full control over Talent image rights.
+            * Oversee the creation of a robust platform that tracks usage, verifies authenticity, and certifies the provenance of all digital assets representing Talents, ensuring protection against identity theft, deepfake abuse, or misrepresentation.
+            * Direct the implementation of cutting-edge systems for the safe creation, management, and licensing of digital replicas, guaranteeing that all usage complies with stringent legal standards for public IP protection.
+            * Collaborate closely with company leadership to align technological advancements with business objectives, ensuring the protection of Talent rights while enabling secure and profitable monetization of digital assets.
+            * Work directly with leadership to drive the strategic growth of the tech team, fostering an environment of innovation and excellence, and building a team capable of delivering on the company’s mission to protect and enhance the digital identities of Talents.
+
+        - title: '**Consulting on Architecture and Pipeline for Autonomous Robot Animation**'
+          gradient_start: '#4bb4e3'
+          gradient_end: '#2b94c3'
+          company: 'Semio'
+          company_url: 'https://semio.ai/'
+          location: 'Los Angeles, CA, USA (Remote)'
+          date_start: '2024-08-01'
+          date_end: ''
+          description: |2-
+            * Develop and advise on the architectural vision and roadmap for the implementation of a procedural and programmable animation engine for social robotics applications that can be deployed and adapted to various embodiments and tasks, while supporting a design-based authoring approach.
+            * Work with the company on the overall concept of a robot operating system supporting such engine and its integration with current and future AI and ML techniques that may be developed or adopted for human-robot interaction applications.
+
+        - title: '**Consulting on Research and Technology Leadership**'
+          gradient_start: '#4bb4e3'
+          gradient_end: '#2b94c3'
+          company: 'DHTA'
+          company_url: 'https://dht.agency/'
+          location: 'Turin, Italy (Remote)'
+          date_start: '2024-07-08'
+          date_end: '2024-09-30'
+          description: |2-
+            * Lead the concept and development of a roadmap and platform for Autonomous Virtual Clones if public figures that can exist and act in 3D realities.
+            * Lead the development of an MVP using Unreal Engine's Metahumans and a custom Brain controller that uses external services such as STT, TTS and LLMs to endow the Metahuman with real-time intelligent interaction capabilities.
+
+        - title: '**Open to short-term Consulting & Advising in Artificial Intelligence**'
           gradient_start: '#4bb4e3'
           gradient_end: '#2b94c3'
           location: 'based in Lisbon, Portugal. Available remotely to anywhere.'
@@ -169,7 +209,7 @@ sections:
             * Robot Animation System
 
     design:
-      columns: '2'
+      columns: '1'
   - block: portfolio
     id: projects
     content:
@@ -227,7 +267,7 @@ sections:
     design:
       # Choose a layout view
       view: compact
-      columns: '2'
+      columns: '1'
   - block: collection
     id: featured
     content:
@@ -237,7 +277,7 @@ sections:
           - publication
         featured_only: true
     design:
-      columns: '2'
+      columns: '1'
       view: citation
   # - block: collection
   #   content:
