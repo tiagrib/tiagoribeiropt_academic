@@ -7,15 +7,15 @@ title: Tiago Ribeiro
 superuser: true
 
 # Role/position
-role: Consulting in Artificial Intelligence and <br> AI-driven Characters and Animation
+role: Chief Technology Officer (CTO) @ DHTA
 
 # Organizations/Affiliations
 organizations:
 
-- name: Independent Consultor & Advisor
-- name: formerly Soul Machines
+- name: Independent consulting in Artificial Intelligence and AI-driven Characters and Animation
+- name: formerly Principal Research Engineer @ Soul Machines
   #url: ""
-- name: formerly GAIPS @ INESC-ID
+- name: formerly PhD @ GAIPS, INESC-ID, IST
   #url: ""
 
 - name: Lisbon, Portugal
