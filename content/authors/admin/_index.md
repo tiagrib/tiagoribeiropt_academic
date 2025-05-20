@@ -11,7 +11,7 @@ role: Chief Technology Officer (CTO) @ DHTA
 
 # Organizations/Affiliations
 organizations:
-
+- name: HRI Animation Architecture @ Semio
 - name: Independent consulting in Artificial Intelligence and AI-driven Characters and Animation
 - name: formerly Principal Research Engineer @ Soul Machines
   #url: ""
@@ -53,8 +53,8 @@ education:
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
   - name: Development
-    color: '#3cb5b5'
-    color_border: '#3cb5b5'
+    color: '#eeac02'
+    color_border: '#eeac02'
     items:
       - name: Python
         description: ''
@@ -63,8 +63,18 @@ skills:
         icon_pack: fab
       - name: C/C++
         description: ''
+        percent: 85
+        icon: laptop-code
+        icon_pack: fas
+      - name: Rust
+        description: ''
         percent: 90
         icon: laptop-code
+        icon_pack: fas
+      - name: Unreal Game Engine
+        description: ''
+        percent: 85
+        icon: cube
         icon_pack: fas
       - name: C#
         description: ''
@@ -76,19 +86,14 @@ skills:
         percent: 70
         icon: cube
         icon_pack: fas
-      - name: Unreal Game Engine
+      - name: HTML/CSS/Dart
         description: ''
-        percent: 30
-        icon: cube
-        icon_pack: fas
-      - name: HTML/CSS
-        description: ''
-        percent: 50
+        percent: 70
         icon: code
         icon_pack: fas
   - name: Production & Team Skills
-    color: '#eeac02'
-    color_border: '#f0bf23'
+    color: '#3cb5b5'
+    color_border: '#3cb5b5'
     items:
       - name: Whiteboarding / Miro
         description: ''
@@ -197,6 +202,10 @@ social:
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 - icon: cv
   icon_pack: ai
+  link: files/CVTiagoRibeiro.pdf
+
+- icon: fa-scroll
+  icon_pack: fa-solid
   link: files/CVTiagoRibeiro.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
