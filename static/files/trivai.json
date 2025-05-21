@@ -1,0 +1,7 @@
+[
+    {
+        "version": "1.0.0",
+        "baseUrl": "https://localhost:3000",
+        "apiUrl": "/api/v1"
+    }
+]
