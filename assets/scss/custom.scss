@@ -106,3 +106,25 @@ blockquote {
 	display:inline;
 	float:left;
 }
+
+
+// Nuclear option - override ALL elements in posts section
+#posts .view-compact {
+  margin-bottom: 0.5rem !important;
+}
+
+#posts .view-compact .article-title {
+  margin-bottom: 0rem !important;
+}
+
+// Hide stream-meta blocks (date/reading time info)
+.stream-meta,
+.article-metadata,
+#posts .stream-meta,
+#posts .article-metadata {
+  display: block !important;
+  font-size: 10px !important;
+  margin-bottom: 0rem !important;
+  margin-top: 0rem !important;
+}
+
