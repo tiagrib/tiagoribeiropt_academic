@@ -118,8 +118,8 @@ blockquote {
 }
 
 // Hide stream-meta blocks (date/reading time info)
-.stream-meta,
-.article-metadata,
+#posts .stream-meta,
+#posts .article-metadata,
 #posts .stream-meta,
 #posts .article-metadata {
   display: block !important;
@@ -128,3 +128,21 @@ blockquote {
   margin-top: 0rem !important;
 }
 
+// Control project thumbnail sizes
+#posts .project-thumbnail img,
+#posts .portfolio .card img,
+#posts .view-compact .card img {
+  max-width: 150px !important;
+  max-height: 100px !important;
+  object-fit: cover !important;
+}
+
+// Specific control for project cards
+#posts .project-card .card-img-top {
+  max-height: 120px !important;
+  object-fit: cover !important;
+}
+
+#projects .ml-3 {
+  margin-bottom: 1.5rem !important;
+}
