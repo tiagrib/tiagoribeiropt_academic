@@ -19,3 +19,10 @@
   package = "netlify-plugin-hugo-cache-resources"
   [plugins.inputs]
     debug = true
+
+[[headers]]
+  for = "/trivai/config.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Content-Type = "application/json"
