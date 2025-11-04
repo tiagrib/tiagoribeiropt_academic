@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
-    "baseUrl": "https://vps-c8e31230.vps.ovh.net:3000",
-    "apiUrl": "/api/v1"
+    "base_url": "https://vps-c8e31230.vps.ovh.net:3000",
+    "api_url": "/api/v1",
+    "health_endpoint": "/health"
 }
