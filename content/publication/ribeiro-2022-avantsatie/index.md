@@ -35,3 +35,18 @@ publication_types:
 abstract: ''
 publication: '*arXiv preprint arXiv:TBD*'
 ---
+{{% video src="https://www.youtube.com/watch?v=sxBeKxnPoCs" controls="yes" %}}
+
+**ABSTRACT**
+
+ERIK is an expressive inverse kinematics technique that has been previously presented and evaluated both algorithmically and in a limited user-interaction scenario. It allows autonomous social robots to convey posture-based expressive information while gaze-tracking users. We have developed a new scenario aimed at further validating some of the unsupported claims from the previous scenario. Our experiment features a fully autonomous Adelino robot, and concludes that ERIK can be used to direct a user’s choice of actions during execution of a given task, fully through its non-verbal expressive queues.
+
+**SUMMARY**
+
+AvantSatie! is a game that requires players to discover a sequence of notes that corresponded to a short piece of a classical theme. They would have to just step on the keys until they figured it out. 
+
+Their only assistance was a screen that only advanced when they got it, plus Adelino who would provide fully nonverbal cues by shaping its posture positively or negatively in order to convey a "warm-cold" hint. It would do so while tracking the user (old Kinect v2!), and this was performed using ERIK (C-ERIK condition) on Nutty Tracks, which also allowed it to switch between IK and FK mode to perform some additional animation (turn to face screen, "yes"..).
+
+I also compared it to an example-based pose interpolation synthesis (C-EBPS) which performed similar to the IK except that I had to first create dozens of poses for each of the expression [positive, neutral, negative] x [12x horizontal] x [6x vertical directions].
+
+Participants in both conditions performed significantly better than the control one where everything was exactly the same including the autonomous robot behaviour except that it didn't provide the nonverbal hints using its body.
