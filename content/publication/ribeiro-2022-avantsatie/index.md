@@ -35,7 +35,7 @@ publication_types:
 abstract: ''
 publication: '*arXiv preprint arXiv:TBD*'
 ---
-{{% video src="https://www.youtube.com/watch?v=sxBeKxnPoCs" controls="yes" %}}
+{{< youtube sxBeKxnPoCs >}}
 
 **ABSTRACT**
 
